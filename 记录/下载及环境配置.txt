@@ -1,0 +1,7 @@
+1、Flutter官网下载Flutter（stable）版本安装
+2、配置环境变量
+（windows环境下->和java一样配置path，
+  变量名：PUB_HOSTED_URL，变量值：https://pub.flutter-io.cn
+  变量名：FLUTTER_STORAGE_BASE_URL，变量值：https://storage.flutter-io.cn）
+3、下载安装Android Studio
+4、打开使用即可
