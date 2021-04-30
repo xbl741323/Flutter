@@ -1,4 +1,4 @@
-
+﻿
 Flutter学习记录
 
 What is Flutter?
@@ -13,3 +13,13 @@ Flutter的特点？
 高效：Hot Reload（热重载）。
 开放：Flutter是开放的，是一个完全开源的项目。
 
+
+运行一个Flutter项目：1.冷启动（从零启动 1m-5m）- 2.热重载（最主要是执行build方法）- 3.热重启（重新运行整个项目）
+
+在Flutter开发中，所有的Widget都不能定义状态
+有状态的Widget: StatefulWidget 在运行过程中有一些状态(data)需要改变
+无状态的Widget: StatelessWidget 内容是确定没有状态(data)的改变
+@immutable 用于注释C类。指示C和C的所有子类型必须是不可变的。
+
+setState方法只能定义在State类中，执行这个方法之后，能够更新State限定的StatefulWidget及其子Widget树。
+Scaffold 我们可以将 Scaffold 理解为一个布局的容器。可以在这个容器中绘制我们的用户界面。
