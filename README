@@ -13,7 +13,6 @@ Flutter的特点？
 高效：Hot Reload（热重载）。
 开放：Flutter是开放的，是一个完全开源的项目。
 
-<<<<<<< HEAD
 
 运行一个Flutter项目：1.冷启动（从零启动 1m-5m）- 2.热重载（最主要是执行build方法）- 3.热重启（重新运行整个项目）
 
@@ -24,7 +23,7 @@ Flutter的特点？
 
 setState方法只能定义在State类中，执行这个方法之后，能够更新State限定的StatefulWidget及其子Widget树。
 Scaffold 我们可以将 Scaffold 理解为一个布局的容器。可以在这个容器中绘制我们的用户界面。
-=======
+
 运行一个Flutter项目：1.冷启动（从零启动 1m-5m）- 2.热重载（最主要是执行build方法）- 3.热重启（重新运行整个项目）
 
->>>>>>> 5c514e067426e79f65f8893247dd43b3ddc26e41
+
