@@ -45,41 +45,134 @@ class _MyHomePageState extends State<MyHomePage> {
         padding: EdgeInsets.all(10),
         child: ListView( //列表可下拉
           children: <Widget>[
-            ProductItem("Apple1","Macbook Product1","https://static-tst.wotao.com/property/label/3308715414e842f8afc69432a912b50e.jpg"),
-            ProductItem("Apple2","Macbook Product2","https://static-tst.wotao.com/property/label/3a16f409792149a4bad2f5d7f5341b1f.jpg"),
-            ProductItem("Apple3","Macbook Product3","https://static-tst.wotao.com/property/label/bb4d03ed67c1447fbc6ae2974fb3d441.jpg"),
-          ],
+            Text(
+              '《定风波》 苏轼 莫听穿林打叶声，何妨吟啸且徐行。竹杖芒鞋轻神马，谁怕？一蓑烟雨任平生。谁怕？一蓑烟雨任平生。谁怕？一蓑烟雨任平生。谁怕？一蓑烟雨任平生。',
+              style: TextStyle(color: Colors.deepPurpleAccent),
+              textAlign: TextAlign.center,
+              maxLines: 2, //控制显示几行，
+              overflow: TextOverflow.ellipsis,
+            ),
+            Text.rich(
+                TextSpan(
+                  children: [
+                    TextSpan(text: "定风波",style: TextStyle(color: Colors.red)),
+                    TextSpan(text: "定风波",style: TextStyle(color: Colors.red)),
+                    TextSpan(text: "定风波",style: TextStyle(color: Colors.red))
+                  ]
+                ),
+                  textAlign: TextAlign.center,
+            ),
+            ElevatedButton(
+                child: Text("按钮"),
+                onPressed: ()=>{},
+                style: ButtonStyle(
+                    textStyle: MaterialStateProperty.all(TextStyle(fontSize: 15)), // 设置文本样式，这里设置颜色不起作用
+                    backgroundColor: MaterialStateProperty.all(Colors.red), // 设置按钮背景颜色
+                    foregroundColor: MaterialStateProperty.all(Colors.yellow), // 设置文本字体颜色
+                    side:MaterialStateProperty.all(BorderSide(color: Colors.blue, width: 1)), // 设置按钮边框border颜色和宽度，外边框装饰 会覆盖 side 配置的样式
+                    shape: MaterialStateProperty.all(StadiumBorder()), // 设置按钮的边框 相当于vue 中 borderRadius
+                ),
+            ),
+            TextButton(
+                child: Row(
+                  children: [
+                    Icon(Icons.access_alarm_rounded,size: 20.0,color: Colors.red,), // 设置图标
+                    Text("按钮")
+                  ],
+                ),
+                onPressed: ()=>{}
+                ),
+            OutlinedButton(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(Icons.access_alarm_rounded,size: 20.0,color: Colors.red,), // 设置图标
+                    Text("按钮")
+                  ],
+                ),
+                onPressed: ()=>{}
+                ),
+            FloatingActionButton(
+                child: Text("按钮"),
+                onPressed: ()=>{}
+                ),
+            // Image.network('https://static-tst.wotao.com/property/label/3308715414e842f8afc69432a912b50e.jpg'),
+            Image.asset("assets/images/img01.jpg"), // 引用本地图片
+            ClipOval( // 设置圆形图片
+              child:  Image.asset(
+                  "assets/images/img04.jpg",
+                width: 100,
+                height: 100,
+                fit:  BoxFit.cover,
+              ),
+            ),
+            ClipRRect( // 设置相当于borerRadius
+              borderRadius: BorderRadius.circular(20),
+              child:  Image.asset(
+                "assets/images/img02.jpg",
+                width: 100,
+                height: 200,
+                fit:  BoxFit.cover,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  icon: Icon(Icons.people),
+                  // labelText:"用户名",
+                  hintText:"请输入用户名",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                      borderSide: BorderSide()
+                  ),
+                  ),
+                onChanged:(value)=>{
+                  print('输出当前值'+'$value')
+                } ,
+                onSubmitted:(value)=>{
+                  print('提交当前值'+'$value')
+                },
+              ), // form表单输入框
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: TextField(
+                decoration: InputDecoration(
+                  icon: Icon(Icons.lock_outline),
+                  labelText:"密码",
+                  hintText:"请输入密码",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(5.0),
+                      borderSide: BorderSide()
+                ),
+                  filled: true,
+                  fillColor: Colors.deepPurpleAccent
+                ),
+              ), // form表单输入框
+            ),
+            Form( // form表单
+              child: Column(
+                children: [
+                  TextFormField(
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.people),
+                      hintText: "请输入用户名"
+                    ),
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                        icon: Icon(Icons.lock_outline),
+                        hintText: "请输入密码"
+                    ),
+                  ),
+                ],
+              ),
+            )
+          ]
         ),
-
       ),
     );
   }
 }
-class ProductItem extends StatelessWidget{
-  final String title;
-  final String desc;
-  final String imgSrc;
 
-  ProductItem(this.title,this.desc,this.imgSrc);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container( //创建一个结合了常见绘制、定位和大小调整小部件的小部件。
-      padding: EdgeInsets.all(2), //padding属性设置
-      margin: EdgeInsets.only(top: 5), //margin属性设置
-      decoration: BoxDecoration(
-        border: Border.all(
-          width: 3
-        )
-      ),
-      child: Column(
-          children: <Widget>[
-            Text(title,style: TextStyle(fontSize:20),),
-            Text(desc,style: TextStyle(fontSize: 16),),
-            SizedBox(height: 10), //占领一定的间距的小块件
-            Image.network(imgSrc),
-          ],
-      ),
-    );
-  }
-}
