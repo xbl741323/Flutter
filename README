@@ -1,13 +1,13 @@
 ﻿
-Flutter学习记录
+### Flutter学习记录
 
-What is Flutter?
+#### What is Flutter?
 Flutter是一个UI SDK（Software Development Kit）。
 可以进行移动端（iOS、Android）,Web端（Beta）,桌面（technical preview）开发，是一种跨平台解决方案。
 Flutter它是有一统大前端的野心的，并且正在侵蚀iOS、Android这些原生开发。
 主流使用目前是移动端，移动端目前已经很多公司在用，Google、阿里、腾讯。
 
-Flutter的特点？
+#### Flutter的特点？
 美观：Flutter内置美观的Material Design和Cupertino widget、丰富的mation API、平滑而自然的滑动效果和平台感知，极大地提升用户体验。
 快速：UI渲染性能好。在生产环境下，Flutter将代码编译成为机器码执行，并充分利用GPU的图形加速能力，因此使用Flutter开发的移动应用即使在低配手机上也能实现每秒60帧的UI渲染速度。
 高效：Hot Reload（热重载）。
