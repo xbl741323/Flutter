@@ -5,17 +5,17 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // æ­¤å°éƒ¨ä»¶æ˜¯åº”ç”¨ç¨‹åºçš„æ ¹
+  // ´ËĞ¡²¿¼şÊÇÓ¦ÓÃ³ÌĞòµÄ¸ù
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,  //æ§åˆ¶å³ä¸Šè§’debugæ˜¾éš
+      debugShowCheckedModeBanner: false,  //¿ØÖÆÓÒÉÏ½ÇdebugÏÔÒş
       title: 'Flutter Demo',
       theme: ThemeData(
-        // è¿™æ˜¯åº”ç”¨ç¨‹åºçš„ä¸»é¢˜
+        // ÕâÊÇÓ¦ÓÃ³ÌĞòµÄÖ÷Ìâ
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter å­¦ä¹ é¡¹ç›®'),
+      home: MyHomePage(title: 'Flutter Ñ§Ï°ÏîÄ¿'),
     );
   }
 }
@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
 
-  // æ­¤å°éƒ¨ä»¶æ˜¯åº”ç”¨ç¨‹åºçš„ä¸»é¡µ
+  // ´ËĞ¡²¿¼şÊÇÓ¦ÓÃ³ÌĞòµÄÖ÷Ò³
   final String title;
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -33,7 +33,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String username;
   String password;
 
-  GlobalKey<FormState> formGlobalKey = GlobalKey(); // ç»™formè¡¨å•åˆ›å»ºkeyå€¼
+  GlobalKey<FormState> formGlobalKey = GlobalKey(); // ¸øform±íµ¥´´½¨keyÖµ
 
   @override
   Widget build(BuildContext context) {
@@ -41,25 +41,25 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Padding( // è®¾ç½®paddingçš„å—ä»¶
+      body: Padding( // ÉèÖÃpaddingµÄ¿é¼ş
         padding: EdgeInsets.all(10),
         child: Form( // for
-              key: formGlobalKey,// mè¡¨å•
+              key: formGlobalKey,// m±íµ¥
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextFormField(
                     decoration: InputDecoration(
                       icon: Icon(Icons.people),
-                      hintText: "è¯·è¾“å…¥ç”¨æˆ·å"
+                      hintText: "ÇëÊäÈëÓÃ»§Ãû"
                     ),
                     onSaved: (value)=>{
                       username = value,
-                      print("è¾“å‡ºåæˆ·å"+'$username')
+                      print("Êä³öÃû»§Ãû"+'$username')
                     },
                     validator: (value){
                       if(value == ''){
-                        return "è¯·è¾“å…¥ç”¨æˆ·å";
+                        return "ÇëÊäÈëÓÃ»§Ãû";
                       }
                       return null;
                     },
@@ -68,27 +68,27 @@ class _MyHomePageState extends State<MyHomePage> {
                     obscureText: true,
                     decoration: InputDecoration(
                         icon: Icon(Icons.lock_outline),
-                        hintText: "è¯·è¾“å…¥å¯†ç "
+                        hintText: "ÇëÊäÈëÃÜÂë"
                     ),
                     onSaved: (value)=>{
                       password = value,
-                      print("è¾“å‡ºå¯†ç "+'$password')
+                      print("Êä³öÃÜÂë"+'$password')
                     },
                     validator: (value){
                       if(value == ''){
-                        return "è¯·è¾“å…¥å¯†ç ";
+                        return "ÇëÊäÈëÃÜÂë";
                       }
                       return null;
                     },
                   ),
-                  Container(  // å¯ä»¥è®¾ç½®æŒ‰é’®å®½é«˜
+                  Container(  // ¿ÉÒÔÉèÖÃ°´Å¥¿í¸ß
                     width: double.infinity,
                     height: 40,
                     margin: EdgeInsets.only(top:15,right:0,bottom:10,left: 40,),
                     child: ElevatedButton(
-                      child: Text("ç™»å½•",style: TextStyle(fontSize: 18),),
+                      child: Text("µÇÂ¼",style: TextStyle(fontSize: 18),),
                       onPressed: ()=>{
-                        print("ç‚¹å‡»äº†ç™»å½•æŒ‰é’®ï¼"),
+                        print("µã»÷ÁËµÇÂ¼°´Å¥£¡"),
                         formGlobalKey.currentState.save(),
                         formGlobalKey.currentState.validate()
                       },
