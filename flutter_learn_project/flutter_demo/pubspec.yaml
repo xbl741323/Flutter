@@ -61,6 +61,8 @@ flutter:
      - assets/images/home/img03.jpg
      - assets/images/home/img04.jpg
      - assets/images/home/movie.jpg
+     - assets/images/home/collect.png
+     - assets/images/home/play.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
