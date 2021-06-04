@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/components/tabbar_item.dart';
+import 'package:flutter_demo/views/home/home.dart';
+import 'package:flutter_demo/views/classify/classify.dart';
+import 'package:flutter_demo/views/movie/movie.dart';
+import 'package:flutter_demo/views/profile/profile.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,9 +18,11 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         // 这是应用程序的主题
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.green, // 设置主题颜色
+        highlightColor: Colors.transparent, // 设置点击高亮 transparent是透明
+        splashColor: Colors.transparent // 设置点击水波纹效果透明
       ),
-      home: MyHomePage(title: 'Flutter 学习项目'),
+      home: MyHomePage(title: '豆瓣App'),
     );
   }
 }
@@ -30,75 +37,42 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  String username;
-  String password;
-
-  GlobalKey<FormState> formGlobalKey = GlobalKey(); // 给form表单创建key值
+  var _currentIndex = 0; // _属性名 一般代表私有属性
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
+      // appBar: AppBar( // 设置头部栏
+      //   title: Text(widget.title), //widget属性是state中自带的,就是MyHomePage
+      //   centerTitle: true
+      // ),
+      bottomNavigationBar: BottomNavigationBar( // 设置底部tab栏
+        // selectedItemColor: Colors.red, // 改变选中的tab栏颜色
+        unselectedFontSize: 12, // 设置不选中时的字体大小
+        selectedFontSize: 12, // 设置选中时的字体大小
+        type: BottomNavigationBarType.fixed,
+        currentIndex: _currentIndex,
+        onTap: (int index){
+          setState(() {
+            _currentIndex = index;
+          });
+        },
+        items: [
+          TabBarItem("home", "主页"),
+          TabBarItem("movie", "书影音"),
+          TabBarItem("focus", "专区"),
+          TabBarItem("my", "我的")
+        ],
       ),
-      body: Padding( // 设置padding的块件
-        padding: EdgeInsets.all(10),
-        child: Form( // for
-              key: formGlobalKey,// m表单
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  TextFormField(
-                    decoration: InputDecoration(
-                      icon: Icon(Icons.people),
-                      hintText: "请输入用户名"
-                    ),
-                    onSaved: (value)=>{
-                      username = value,
-                      print("输出名户名"+'$username')
-                    },
-                    validator: (value){
-                      if(value == ''){
-                        return "请输入用户名";
-                      }
-                      return null;
-                    },
-                  ),
-                  TextFormField(
-                    obscureText: true,
-                    decoration: InputDecoration(
-                        icon: Icon(Icons.lock_outline),
-                        hintText: "请输入密码"
-                    ),
-                    onSaved: (value)=>{
-                      password = value,
-                      print("输出密码"+'$password')
-                    },
-                    validator: (value){
-                      if(value == ''){
-                        return "请输入密码";
-                      }
-                      return null;
-                    },
-                  ),
-                  Container(  // 可以设置按钮宽高
-                    width: double.infinity,
-                    height: 40,
-                    margin: EdgeInsets.only(top:15,right:0,bottom:10,left: 40,),
-                    child: ElevatedButton(
-                      child: Text("登录",style: TextStyle(fontSize: 18),),
-                      onPressed: ()=>{
-                        print("点击了登录按钮！"),
-                        formGlobalKey.currentState.save(),
-                        formGlobalKey.currentState.validate()
-                      },
-                      style: ButtonStyle()
-                    ),
-                  )
-                ],
-              ),
-            )
-      ),
+      body: IndexedStack(  // 设置tab分类展示
+        index: _currentIndex,
+        children: [
+          Home(),
+          Classify(),
+          Movie(),
+          Profile()
+        ],
+      )
     );
   }
 }

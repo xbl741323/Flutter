@@ -29,6 +29,8 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
 
+  dio: ^4.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -46,10 +48,19 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/images/img01.jpg
-     - assets/images/img02.jpg
-     - assets/images/img03.jpg
-     - assets/images/img04.jpg
+     - assets/images/tabbar/home.png
+     - assets/images/tabbar/home_active.png
+     - assets/images/tabbar/focus.png
+     - assets/images/tabbar/focus_active.png
+     - assets/images/tabbar/movie.png
+     - assets/images/tabbar/movie_active.png
+     - assets/images/tabbar/my.png
+     - assets/images/tabbar/my_active.png
+     - assets/images/home/img01.jpg
+     - assets/images/home/img02.jpg
+     - assets/images/home/img03.jpg
+     - assets/images/home/img04.jpg
+     - assets/images/home/movie.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
