@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/models/home_model.dart';
+import 'package:flutter_demo/views/home/childCpns/dashed_line.dart';
+import 'package:flutter_demo/views/home/childCpns/star_rating.dart';
 
 class MovieListItem extends StatelessWidget {
   final MovieItem item; // 定义一个item属性
@@ -50,7 +52,8 @@ class MovieListItem extends StatelessWidget {
         children: [
           getRowOne(),
           getRowTwo(),
-          getRowThree()
+          getRowThree(),
+          getRowFour(),
         ]);
   }
 
@@ -71,7 +74,7 @@ class MovieListItem extends StatelessWidget {
     );
   }
 
-  // 2.1 row部分two模块
+  // 2.2 row部分two模块
   Widget getRowTwo(){
     return Expanded( // 除去两端剩余的部分，可以很好的兼容宽度自适应，做手机适配
       child: Container( // 这里的Container不要设置宽度，不然会影响手机适配
@@ -94,9 +97,7 @@ class MovieListItem extends StatelessWidget {
                 Text("肖申克的救赎",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold)),
                 Text("(1994)",style: TextStyle(fontSize: 14),)
               ],),
-            Row(children: [
-              Text("评分：9.7",style: TextStyle(fontSize: 12),)
-            ],),
+            getRowRating(), // 评分模块
             Container(
               child: Text(
                 "犯罪/剧情/弗兰克·德拉邦特/提姆·罗宾斯/摩根·富兰克林/本杰明·亚里士多德利亚",
@@ -110,11 +111,45 @@ class MovieListItem extends StatelessWidget {
     );
   }
 
-  // 2.3 row部分three模块
+  // 2.2.1 评分模块
+  Widget getRowRating(){
+    return Row(
+      children: [
+        StarRating(
+          rating: 9.1,
+          maxRating: 10,
+          count: 5,
+          size: 15,
+          selectColor: Colors.amber,
+          unselectColor: Colors.black26,
+        ),
+        Container(
+            margin: EdgeInsets.only(left: 2),
+            child: Text('9.1',style: TextStyle(color: Colors.black54),)),// 封装的评分组件
+      ],
+    );
+  }
+
+  // 2.3 row部分three模块,绘制虚线
   Widget getRowThree(){
+    return Container(
+      height: 80,
+      margin: EdgeInsets.only(left: 5),
+      child: Dashedline(
+        axis: Axis.vertical,
+        count: 14,
+        dashedWidth: 1,
+        dashedHeight: 3,
+        color: Colors.black45,
+      ),
+    );
+  }
+
+  // 2.4 row部分four模块
+  Widget getRowFour(){
     return  Container( // Container可以解决居中问题
       width: 40,
-      height: 100,
+      height: 80,
       alignment: Alignment.center,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -125,7 +160,7 @@ class MovieListItem extends StatelessWidget {
             "assets/images/home/collect.png",
             width: 20,
             height: 20,
-            fit:  BoxFit.cover,
+            fit: BoxFit.cover,
           ),
           Text("想看",style: TextStyle(color: Colors.amber,fontSize: 12),),
         ],
