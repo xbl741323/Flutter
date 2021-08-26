@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_demo/models/home_model.dart';
 import 'package:flutter_demo/views/home/childCpns/dashed_line.dart';
+import 'package:flutter_demo/views/home/childCpns/movie_detail.dart';
 import 'package:flutter_demo/views/home/childCpns/star_rating.dart';
 
 class MovieListItem extends StatelessWidget {
@@ -17,15 +18,22 @@ class MovieListItem extends StatelessWidget {
         )
       ),
       padding: EdgeInsets.all(10),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          getRankWidget(), // 将样式封装成方法调用展示
-          getRowWidget(),
-          getBottomWidget()
-        ],
-      ),
+      child: new InkWell(
+            onTap: (){
+              Navigator.of(context).push(
+                new MaterialPageRoute(builder: (ctx) => new MovieDetail())
+              );
+            },
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                getRankWidget(), // 将样式封装成方法调用展示
+                getRowWidget(),
+                getBottomWidget()
+              ],
+            ),
+          )
     );
   }
 
@@ -40,7 +48,7 @@ class MovieListItem extends StatelessWidget {
           borderRadius: BorderRadius.all(Radius.circular(4.0))
       ),
       margin: EdgeInsets.only(left:0,bottom:5),
-      child: Text("No.1",style: TextStyle(color: Colors.brown),),
+      child: Text("No.1",style: TextStyle(color: Colors.brown)),
     );
   }
 
@@ -147,7 +155,7 @@ class MovieListItem extends StatelessWidget {
 
   // 2.4 row部分four模块
   Widget getRowFour(){
-    return  Container( // Container可以解决居中问题
+    return Container( // Container可以解决居中问题
       width: 40,
       height: 80,
       alignment: Alignment.center,
