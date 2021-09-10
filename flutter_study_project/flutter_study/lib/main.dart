@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/views/expand/expand.dart';
+import 'package:flutter_study/views/json/json.dart';
+import 'package:flutter_study/views/network/network.dart';
+import 'package:flutter_study/views/state_manage/state_manage.dart';
+import 'package:flutter_study/views/style/style.dart';
+import 'components/tabbar_item.dart';
 
 void main() {
   runApp(MyApp());
@@ -9,11 +15,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: true, //控制右上角debug显隐
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Flutter深度学习'),
     );
   }
 }
@@ -28,40 +35,33 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  int _currentIndex = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
+        bottomNavigationBar: BottomNavigationBar(
+          unselectedFontSize: 12, // 设置不选中时的字体大小
+          selectedFontSize: 12, // 设置选中时的字体大小
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _currentIndex,
+          onTap: (int index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          items: [
+            TabBarItem(Icon(Icons.whatshot_outlined), "样式"),
+            TabBarItem(Icon(Icons.add_to_queue_sharp), "Http"),
+            TabBarItem(Icon(Icons.api_sharp), "JSON序列化"),
+            TabBarItem(Icon(Icons.backup_outlined), "状态管理"),
+            TabBarItem(Icon(Icons.anchor_sharp), "拓展")
           ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+        body: IndexedStack(
+          index: _currentIndex,
+          children: [Style(), Network(), Json(), StateManage(), Expand()],
+        ) // This trailing comma makes auto-formatting nicer for build methods.
+        );
   }
 }
