@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: true, //控制右上角debug显隐
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.red,
       ),
       home: MyHomePage(title: 'Flutter深度学习'),
     );
@@ -55,7 +55,7 @@ class _MyHomePageState extends State<MyHomePage> {
             TabBarItem(Icon(Icons.add_to_queue_sharp), "Http"),
             TabBarItem(Icon(Icons.api_sharp), "JSON序列化"),
             TabBarItem(Icon(Icons.backup_outlined), "状态管理"),
-            TabBarItem(Icon(Icons.anchor_sharp), "拓展")
+            TabBarItem(Icon(Icons.account_circle), "我的")
           ],
         ),
         body: IndexedStack(

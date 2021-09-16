@@ -36,7 +36,7 @@ class Style extends StatelessWidget {
       child: ListView.separated(
         itemCount: strItems.length,
         separatorBuilder: (BuildContext context, int index) {
-          return Divider(height: 1.0, color: Colors.blue);
+          return Divider(height: 1.0, color: Colors.red);
         },
         itemBuilder: (context, index) {
           return buildListData(
@@ -49,11 +49,11 @@ class Style extends StatelessWidget {
   // 封装
   Widget buildListData(
       BuildContext context, String strItem, index) {
-    return new ListTile(
+      return new ListTile(
         isThreeLine: false,
-        leading: new Icon(Icons.auto_awesome, color: Colors.blue),
+        leading: new Icon(Icons.auto_awesome, color: Colors.red),
         title: new Text(strItem),
-        trailing: new Icon(Icons.keyboard_arrow_right, color: Colors.blue),
+        trailing: new Icon(Icons.keyboard_arrow_right, color: Colors.red),
         onTap: () {
           switch (index) {
             case 0:
