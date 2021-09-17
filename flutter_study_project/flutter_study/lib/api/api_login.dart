@@ -6,16 +6,24 @@ class api_login {
   // 用户登录api
   static userLogin(Map<String,dynamic> params) {
     return Http.request(
-        url: "uims/account/login",
+        url: "/uims/account/login",
         method: 'post',
         params: params
+    );
+  }
+
+  // 获取登录用户信息
+  static getUserInfo(){
+    return Http.request(
+      url: "/uims/account/info",
+      method: 'get'
     );
   }
 
   // 获取测试信息
   static getTestData() {
     return Http.request(
-        url: "policy/detail?number=XM20210525001&type=4&token=2",
+        url: "/policy/detail?number=XM20210525001&type=4&token=2",
         method: 'get'
     );
   }

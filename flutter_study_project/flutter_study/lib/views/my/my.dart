@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/views/login/login.dart';
 
-class Expand extends StatelessWidget {
+class My extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

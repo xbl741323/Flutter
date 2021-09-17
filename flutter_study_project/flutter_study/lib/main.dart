@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/views/expand/expand.dart';
+import 'package:flutter_study/states/global.dart';
 import 'package:flutter_study/views/json/json.dart';
+import 'package:flutter_study/views/my/my.dart';
 import 'package:flutter_study/views/network/network.dart';
 import 'package:flutter_study/views/state_manage/state_manage.dart';
 import 'package:flutter_study/views/style/style.dart';
 import 'components/tabbar_item.dart';
 
-void main() {
-  runApp(MyApp());
-}
+void main() => Global.init().then((e) => runApp(MyApp()));
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -60,7 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
         body: IndexedStack(
           index: _currentIndex,
-          children: [Style(), Network(), Json(), StateManage(), Expand()],
+          children: [Style(), Network(), Json(), StateManage(), My()],
         ) // This trailing comma makes auto-formatting nicer for build methods.
         );
   }

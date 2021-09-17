@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_study/api/api_login.dart';
-import 'package:flutter_study/network/http.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -23,8 +22,11 @@ class _LoginBodyState extends State<Login> {
       'securityCode': "",
       'terminalType': 0
     };
-    api_login.userLogin(params).then((val) {
-      print(val);
+    api_login.userLogin(params).then((res) {
+      print(res);
+    });
+    api_login.getUserInfo().then((res) {
+      print(res);
     });
     print(phone);
     print(password);
