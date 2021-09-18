@@ -10,6 +10,7 @@ import 'package:flutter_study/components/style/style_text.dart';
 import 'package:flutter_study/components/style/style_wrap.dart';
 
 class Style extends StatelessWidget {
+  final ScrollController _controller = ScrollController(keepScrollOffset: false);
   List<String> strItems = <String>[
     'Widget（小部件） -> Text',
     'Widget（小部件） -> Row,Column',
@@ -38,6 +39,7 @@ class Style extends StatelessWidget {
         separatorBuilder: (BuildContext context, int index) {
           return Divider(height: 1.0, color: Colors.red);
         },
+        controller: _controller,
         itemBuilder: (context, index) {
           return buildListData(
               context, strItems[index], index);

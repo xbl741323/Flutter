@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_study/api/api_login.dart';
+import 'package:flutter_study/states/global.dart';
+import 'package:flutter_study/views/my/my.dart';
+import 'package:flutter_study/views/state_manage/state_manage.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -14,23 +17,31 @@ class _LoginBodyState extends State<Login> {
   GlobalKey<FormState> formGlobalKey = GlobalKey(); // 给form表单创建key值
 
   userLogin() {
-    var params = {
-      'accountNo': "17730078715",
-      'accountPassword': "0ae16aae193ee3e226e5d06db285aa7b",
-      'accountSource': 1,
-      'platFlag': "A",
-      'securityCode': "",
-      'terminalType': 0
-    };
-    api_login.userLogin(params).then((res) {
-      print(res);
-    });
-    api_login.getUserInfo().then((res) {
-      print(res);
-    });
-    print(phone);
-    print(password);
-    print("点击了登录按钮！");
+    if(phone != ''&&password != ''){
+      var params = {
+        'accountNo': "17730078715",
+        'accountPassword': "0ae16aae193ee3e226e5d06db285aa7b",
+        'accountSource': 1,
+        'platFlag': "A",
+        'securityCode': "",
+        'terminalType': 0
+      };
+      // api_login.userLogin(params).then((res) {
+      //   print(res);
+      // });
+      print(phone);
+      print(password);
+      print("点击了登录按钮！");
+      this.changeLoginFlag(true);
+      if(Global.loginFlag){
+        Navigator.of(context).push(new MaterialPageRoute(builder: (ctx) => My()));
+      }
+    }
+  }
+
+  changeLoginFlag(status){
+    Global.loginFlag = status;
+    Global.saveLoginFlag();
   }
 
   @override

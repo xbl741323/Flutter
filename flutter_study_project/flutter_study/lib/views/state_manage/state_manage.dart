@@ -14,17 +14,27 @@ class _StateManageState extends State<StateManage> {
   changeCount() {
     Global.count = num;
     Global.saveCount();
+    this.getCount();
+    print(num);
+
+  }
+
+  getCount(){
     Global.getCount().then((value) => {
-          setState(() => {
-                showNum = value,
-              })
-        });
+      setState(() => {
+        if (value != null)
+          {
+            showNum = value,
+          }
+      })
+    });
   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+    this.getCount();
   }
 
   @override
@@ -59,9 +69,14 @@ class _StateManageState extends State<StateManage> {
                 hintStyle: TextStyle(color: Color(0xFF999999), fontSize: 12),
               ),
               keyboardType: TextInputType.number,
-              onSaved: (value) => {this.num = int.parse(value)},
+              onSaved: (value) => {
+                if(value!=''){
+                  this.num = int.parse(value)
+                }else{
+                  this.num = 0
+                }
+              },
               validator: (value) {
-                print(value);
                 if (value == '') {
                   return "请输入";
                 }
