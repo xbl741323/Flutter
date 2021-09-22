@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/states/global.dart';
+import 'package:flutter_study/states/global_notifier.dart';
+import 'package:provider/provider.dart';
 
 class StateManage extends StatefulWidget {
   @override
@@ -112,8 +114,15 @@ class _StateManageState extends State<StateManage> {
         margin: EdgeInsets.only(top: 100),
         child: Column(
           children: [
-            Text('显示共享变量count：' + '${this.showNum}',
-                style: TextStyle(color: Colors.red, fontSize: 30)),
+            Consumer<LoginModel>(
+              builder: (context,loginModel,Widget child) =>Text('显示共享变量count：' + '${loginModel.count}',
+                  style: TextStyle(color: Colors.red, fontSize: 30)),
+            ),
+            Consumer<LoginModel>(
+               builder: (context,loginModel,Widget child) =>Text(
+                 '${loginModel.loginFlag}'
+               ),
+             ),
           ],
         ));
   }

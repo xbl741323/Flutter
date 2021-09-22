@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/states/global.dart';
+import 'package:flutter_study/states/global_notifier.dart';
 import 'package:flutter_study/views/json/json.dart';
 import 'package:flutter_study/views/my/my.dart';
 import 'package:flutter_study/views/network/network.dart';
 import 'package:flutter_study/views/state_manage/state_manage.dart';
 import 'package:flutter_study/views/style/style.dart';
+import 'package:provider/provider.dart';
 import 'components/tabbar_item.dart';
 
 void main() => Global.init().then((e) => runApp(MyApp()));
@@ -13,13 +15,18 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: true, //控制右上角debug显隐
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.red,
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider.value(value: LoginModel()),
+      ],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: true, //控制右上角debug显隐
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.red,
+        ),
+        home: MyHomePage(title: 'Flutter深度学习'),
       ),
-      home: MyHomePage(title: 'Flutter深度学习'),
     );
   }
 }

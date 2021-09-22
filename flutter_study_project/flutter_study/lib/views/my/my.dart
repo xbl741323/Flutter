@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/states/global_notifier.dart';
 import 'package:flutter_study/views/login/login.dart';
 import 'package:flutter_study/states/global.dart';
+import 'package:provider/provider.dart';
 
 class My extends StatefulWidget {
   @override
@@ -11,28 +13,16 @@ class _MyState extends State<My> {
   bool loginFlag = false;
   String title = '去登录';
 
-  getLoginFlag() {
-    Global.getLoginFlag().then((value) => {
-          setState(() => {
-                if (value != null)
-                  {
-                    loginFlag = value,
-                    title = loginFlag == true?"退出":"去登录",
-                    print(loginFlag)
-                  }
-              })
-        });
-  }
-
   changeLoginFlag(status){
     Global.loginFlag = status;
     Global.saveLoginFlag();
   }
 
   skip(){
-    if(loginFlag){
-      this.changeLoginFlag(false);
-    }
+    setState(() {
+        loginFlag = !loginFlag;
+    });
+    this.changeLoginFlag(loginFlag);
     print(Global.loginFlag);
     Navigator.of(context).push(new MaterialPageRoute(builder: (ctx) => Login()));
   }
@@ -41,7 +31,6 @@ class _MyState extends State<My> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    this.getLoginFlag();
   }
 
   @override
@@ -60,9 +49,11 @@ class _MyState extends State<My> {
               color: Colors.red,
               borderRadius: BorderRadius.all(Radius.circular(5)),
             ),
-            child: Text(title,
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Color(0xFFFFFFFF))),
+            child: Consumer<LoginModel>(
+              builder: (context,loginModel,Widget child) =>Text(
+                  '${loginModel.loginFlag}'
+              ),
+            ),
           ),
           onTap: () => this.skip(),
         ),
