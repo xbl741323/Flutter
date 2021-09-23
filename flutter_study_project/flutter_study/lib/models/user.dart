@@ -3,41 +3,18 @@
 * */
 
 class User {
-  String accountNo;
-  String accountSubject;
-  int accountType;
-  String customerNo;
-  int id;
-  String portraitUrl;
-  String userNo;
+  String userName;
+  int age;
 
   User(
-    this.accountNo,
-    this.accountSubject,
-    this.accountType,
-    this.customerNo,
-    this.id,
-    this.portraitUrl,
-    this.userNo,
+    this.userName,
+    this.age,
   );
 
   User.fromJson(Map<String, dynamic> json) {
-    accountNo = json['accountNo'];
-    accountSubject = json['accountSubject'];
-    accountType = json['accountType'];
-    customerNo = json['customerNo'];
-    id = json['id'];
-    portraitUrl = json['portraitUrl'];
-    userNo = json['userNo'];
+    userName = json['userName'];
+    age = json['age'];
   }
 
-  Map<String, dynamic> toJson() => {
-        'accountNo': accountNo,
-        'accountSubject': accountSubject,
-        'accountType': accountType,
-        'customerNo': customerNo,
-        'id': id,
-        'portraitUrl': portraitUrl,
-        'userNo': userNo
-      };
+  Map<String, dynamic> toJson() => {'userName': userName, 'age': age};
 }

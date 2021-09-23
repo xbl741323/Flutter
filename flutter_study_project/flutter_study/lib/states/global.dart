@@ -22,7 +22,9 @@ class Global {
     return _prefs.getBool('loginFlag');
   }
 
-  // 统一封装存数据（统一和单一方法存取数据建议：待完善）
+  //（统一和单一存取数据建议：存储model（json对象）可以选择单一存储，存储前可以先将model对象转换为String类型的数据，再进行存储,基本类型数据可以选择统一封装存储）
+
+  // 统一封装存数据
   static Object savePreference(String key, Object value) async {
     _prefs = await SharedPreferences.getInstance();
     if (value is int) {
