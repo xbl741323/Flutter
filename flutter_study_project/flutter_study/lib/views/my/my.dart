@@ -15,7 +15,7 @@ class _MyState extends State<My> {
 
   changeLoginFlag(status){
     Global.loginFlag = status;
-    Global.saveLoginFlag();
+    Global.savePreference('loginFlag',status);
   }
 
   skip(){
@@ -24,7 +24,7 @@ class _MyState extends State<My> {
     });
     this.changeLoginFlag(loginFlag);
     print(Global.loginFlag);
-    Navigator.of(context).push(new MaterialPageRoute(builder: (ctx) => Login()));
+    // Navigator.of(context).push(new MaterialPageRoute(builder: (ctx) => Login()));
   }
 
   @override
@@ -39,7 +39,14 @@ class _MyState extends State<My> {
       appBar: AppBar(
         title: Text("我的"),
       ),
-      body: Center(
+      body: getMyBody()
+    );
+  }
+
+  Widget getMyBody(){
+    LoginModel loginModel = Provider.of<LoginModel>(context);
+    if(loginModel.loginFlag){
+      return Center(
         child: GestureDetector(
           child: Container(
             alignment: Alignment.center,
@@ -57,7 +64,27 @@ class _MyState extends State<My> {
           ),
           onTap: () => this.skip(),
         ),
-      ),
-    );
+      );
+    }else{
+      return Center(
+        child: GestureDetector(
+          child: Container(
+            alignment: Alignment.center,
+            width: 100,
+            height: 40,
+            decoration: BoxDecoration(
+              color: Colors.red,
+              borderRadius: BorderRadius.all(Radius.circular(5)),
+            ),
+            child: Consumer<LoginModel>(
+              builder: (context,loginModel,Widget child) =>Text(
+                  '${loginModel.loginFlag}'
+              ),
+            ),
+          ),
+          onTap: () => this.skip(),
+        ),
+      );
+    }
   }
 }

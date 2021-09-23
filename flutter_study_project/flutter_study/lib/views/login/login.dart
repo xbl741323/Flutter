@@ -41,7 +41,7 @@ class _LoginBodyState extends State<Login> {
 
   changeLoginFlag(status){
     Global.loginFlag = status;
-    Global.saveLoginFlag();
+    Global.savePreference('loginFlag',status);
   }
 
   @override

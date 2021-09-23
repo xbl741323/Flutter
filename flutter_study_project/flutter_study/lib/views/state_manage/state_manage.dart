@@ -13,30 +13,21 @@ class _StateManageState extends State<StateManage> {
   GlobalKey<FormState> _formGlobalKey = GlobalKey(); // 给form表单创建key值
   int num = 0;
   int showNum = 0;
+  bool status = true;
   changeCount() {
-    Global.count = num;
-    Global.saveCount();
-    this.getCount();
-    print(num);
-
-  }
-
-  getCount(){
-    Global.getCount().then((value) => {
-      setState(() => {
-        if (value != null)
-          {
-            showNum = value,
-          }
-      })
+    setState(() => {
+      status = !status
     });
+    Global.count = num;
+    Global.loginFlag = !status;
+    Global.savePreference('count', num);
+    Global.savePreference('loginFlag', !status);
   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    this.getCount();
   }
 
   @override

@@ -9,27 +9,64 @@ class Global {
   //初始化全局信息，会在APP启动时执行
   static Future init() async {}
 
-  //存储全局变量loginFlag
+  // 单一存储全局变量loginFlag
   static saveLoginFlag() async {
+    //SharedPreferences用于存储数据
     _prefs = await SharedPreferences.getInstance();
     _prefs.setBool("loginFlag", loginFlag);
   }
 
-  //获取全局变量loginFlag
+  // 单一获取全局变量loginFlag
   static Future<bool> getLoginFlag() async {
     _prefs = await SharedPreferences.getInstance();
     return _prefs.getBool('loginFlag');
   }
 
-  //存储全局变量count
-  static saveCount() async {
+  // 统一封装存数据（统一和单一方法存取数据建议：待完善）
+  static Object savePreference(String key, Object value) async {
     _prefs = await SharedPreferences.getInstance();
-    _prefs.setInt("count", count);
+    if (value is int) {
+      await _prefs.setInt(key, value);
+    } else if (value is double) {
+      await _prefs.setDouble(key, value);
+    } else if (value is bool) {
+      await _prefs.setBool(key, value);
+    } else if (value is String) {
+      await _prefs.setString(key, value);
+    } else if (value is List) {
+      await _prefs.setStringList(key, value);
+    } else {
+      throw new Exception("不能得到这种类型");
+    }
   }
 
-  //获取全局变量count
-  static Future<int> getCount() async {
+  // 统一封装取数据
+  static Future getPreference(String key, String type) async {
     _prefs = await SharedPreferences.getInstance();
-    return _prefs.getInt('count');
+    if (type == 'int') {
+      return  _prefs.getInt(key);
+    } else if (type == 'double') {
+      return  _prefs.getDouble(key);
+    } else if (type == 'bool') {
+      return  _prefs.getBool(key);
+    } else if (type == 'String') {
+      return  _prefs.getString(key);
+    } else if (type == 'List') {
+      return  _prefs.getStringList(key);
+    } else {
+      throw new Exception("不能得到这种类型");
+    }
+  }
+
+  // 统一封装删除指定数据
+  static void remove(String key) async {
+    _prefs = await SharedPreferences.getInstance();
+    _prefs.remove(key); //删除指定键
+  }
+
+  // 清空整个缓存
+  static void clear() async {
+    _prefs = await SharedPreferences.getInstance();
+    _prefs.clear(); ////清空缓存
   }
 }
