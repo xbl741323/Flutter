@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/components/style/style_align.dart';
+import 'package:flutter_study/components/style/style_card.dart';
 import 'package:flutter_study/components/style/style_center.dart';
 import 'package:flutter_study/components/style/style_container.dart';
 import 'package:flutter_study/components/style/style_expanded.dart';
+import 'package:flutter_study/components/style/style_gridview.dart';
 import 'package:flutter_study/components/style/style_listview.dart';
 import 'package:flutter_study/components/style/style_row_and_column.dart';
 import 'package:flutter_study/components/style/style_stack.dart';
 import 'package:flutter_study/components/style/style_text.dart';
+import 'package:flutter_study/components/style/style_transform.dart';
 import 'package:flutter_study/components/style/style_wrap.dart';
 
 class Style extends StatelessWidget {
@@ -20,7 +23,10 @@ class Style extends StatelessWidget {
     'Widget（小部件） -> Align',
     'Widget（小部件） -> Expanded',
     'Widget（小部件） -> ListView',
+    'Widget（小部件） -> GridView',
     'Widget（小部件） -> Wrap',
+    'Widget（小部件） -> Card',
+    'Widget（小部件） -> Transform',
   ];
 
   @override
@@ -83,7 +89,16 @@ class Style extends StatelessWidget {
               Navigator.of(context).push(new MaterialPageRoute(builder: (ctx) => style_listview()));
               break;
             case 8:
+              Navigator.of(context).push(new MaterialPageRoute(builder: (ctx) => style_gridview()));
+              break;
+            case 9:
               Navigator.of(context).push(new MaterialPageRoute(builder: (ctx) => style_wrap()));
+              break;
+            case 10:
+              Navigator.of(context).push(new MaterialPageRoute(builder: (ctx) => style_card()));
+              break;
+            case 11:
+              Navigator.of(context).push(new MaterialPageRoute(builder: (ctx) => style_transform()));
               break;
           }
         });
