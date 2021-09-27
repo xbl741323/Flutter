@@ -47,7 +47,7 @@ class style_page_view_state extends State<style_page_view> {
   Widget getPageItem(index) {
     return Container(
       alignment: Alignment.center,
-      color: Colors.blue,
+      color: Colors.red,
       child: Text(
         '${index}',
         style: TextStyle(color: Colors.white, fontSize: 20),

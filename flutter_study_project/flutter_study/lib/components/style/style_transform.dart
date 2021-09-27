@@ -29,13 +29,13 @@ class style_transform_state extends State<style_transform> {
         Text('要旋转一个widget，将它嵌套在一个Transform中。 使设置其alignment和origin属性分别以相对和绝对值指定变换原点。对于简单的2D旋转，widget在Z轴上旋转。（度数×π/ 180）'),
         Transform(
           child: Container(
-            margin: EdgeInsets.only(top: 40),
+            margin: EdgeInsets.only(top: 100),
             color: Colors.red,
-            child: Image.asset("assets/images/one.jpg",width: 100,height: 100,fit: BoxFit.fill),
+            child: Image.asset("assets/images/one.jpg",width: 200,height: 200,fit: BoxFit.fill),
           ),
           alignment: Alignment.center,
           transform: new Matrix4.identity()
-            ..rotateZ(45 * 3.1415927 / 180),
+            ..rotateZ(15 * 3.1415927 / 180),
         )
       ],
     );
