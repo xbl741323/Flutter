@@ -6,8 +6,10 @@ import 'package:flutter_study/components/style/style_container.dart';
 import 'package:flutter_study/components/style/style_expanded.dart';
 import 'package:flutter_study/components/style/style_gridview.dart';
 import 'package:flutter_study/components/style/style_listview.dart';
+import 'package:flutter_study/components/style/style_pageview.dart';
 import 'package:flutter_study/components/style/style_row_and_column.dart';
 import 'package:flutter_study/components/style/style_stack.dart';
+import 'package:flutter_study/components/style/style_tabbarview.dart';
 import 'package:flutter_study/components/style/style_text.dart';
 import 'package:flutter_study/components/style/style_transform.dart';
 import 'package:flutter_study/components/style/style_wrap.dart';
@@ -27,6 +29,8 @@ class Style extends StatelessWidget {
     'Widget（小部件） -> Wrap',
     'Widget（小部件） -> Card',
     'Widget（小部件） -> Transform',
+    'Widget（小部件） -> PageView',
+    'Widget（小部件） -> TabBarView',
   ];
 
   @override
@@ -99,6 +103,12 @@ class Style extends StatelessWidget {
               break;
             case 11:
               Navigator.of(context).push(new MaterialPageRoute(builder: (ctx) => style_transform()));
+              break;
+            case 12:
+              Navigator.of(context).push(new MaterialPageRoute(builder: (ctx) => style_page_view()));
+              break;
+            case 13:
+              Navigator.of(context).push(new MaterialPageRoute(builder: (ctx) => style_tabBar_view()));
               break;
           }
         });
