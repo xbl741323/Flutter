@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_study/main.dart';
 import 'package:flutter_study/states/global_notifier.dart';
 import 'package:flutter_study/views/login/login.dart';
 import 'package:flutter_study/states/global.dart';
@@ -16,15 +17,17 @@ class _MyState extends State<My> {
   changeLoginFlag(status){
     Global.loginFlag = status;
     Global.savePreference('loginFlag',status);
+    print(Global.loginFlag);
   }
 
   skip(){
     setState(() {
-        loginFlag = !loginFlag;
+        if(loginFlag){
+          loginFlag = false;
+        }
     });
     this.changeLoginFlag(loginFlag);
-    print(Global.loginFlag);
-    // Navigator.of(context).push(new MaterialPageRoute(builder: (ctx) => Login()));
+    Navigator.of(context).push(new MaterialPageRoute(builder: (ctx) => Login()));
   }
 
   @override
@@ -45,7 +48,7 @@ class _MyState extends State<My> {
 
   Widget getMyBody(){
     LoginModel loginModel = Provider.of<LoginModel>(context);
-    if(loginModel.loginFlag){
+    if(!loginModel.loginFlag){
       return Center(
         child: GestureDetector(
           child: Container(
@@ -57,32 +60,47 @@ class _MyState extends State<My> {
               borderRadius: BorderRadius.all(Radius.circular(5)),
             ),
             child: Consumer<LoginModel>(
-              builder: (context,loginModel,Widget child) =>Text(
-                  '${loginModel.loginFlag}'
-              ),
+                builder: (context,loginModel,Widget child) {
+                  return Text(
+                      "${loginModel.loginFlag== false?'去登录':'退出'}"
+                  );
+                }
             ),
           ),
           onTap: () => this.skip(),
         ),
       );
     }else{
-      return Center(
-        child: GestureDetector(
-          child: Container(
-            alignment: Alignment.center,
-            width: 100,
-            height: 40,
-            decoration: BoxDecoration(
-              color: Colors.red,
-              borderRadius: BorderRadius.all(Radius.circular(5)),
+      return Container(
+        alignment: Alignment.center,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              child: Text('欢迎你! master',style: TextStyle(color: Colors.red,fontSize: 20)),
             ),
-            child: Consumer<LoginModel>(
-              builder: (context,loginModel,Widget child) =>Text(
-                  '${loginModel.loginFlag}'
+            GestureDetector(
+              child: Container(
+                margin: EdgeInsets.only(top: 50),
+                alignment: Alignment.center,
+                width: 100,
+                height: 40,
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.all(Radius.circular(5)),
+                ),
+                child: Consumer<LoginModel>(
+                    builder: (context,loginModel,Widget child) {
+                      return Text(
+                          "${loginModel.loginFlag== false?'去登录':'退出'}"
+                      );
+                    }
+                ),
               ),
+              onTap: () => this.skip(),
             ),
-          ),
-          onTap: () => this.skip(),
+          ],
         ),
       );
     }

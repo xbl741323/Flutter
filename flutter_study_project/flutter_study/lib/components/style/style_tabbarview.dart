@@ -7,7 +7,7 @@ class style_tabBar_view extends StatefulWidget {
 }
 
 class style_tabBar_state extends State<style_tabBar_view> {
-  List<String> tabs = ['甘雨', '刻晴', '胡桃'];
+  final List<String> myTabs = ['电影', '电视', '综艺', '读书', '音乐', '同城'];
   TabController controller;
 
   @override
@@ -17,43 +17,16 @@ class style_tabBar_state extends State<style_tabBar_view> {
 
   Widget getBody() {
     return DefaultTabController(
-      length: 6,
+      length: myTabs.length,
       child: Scaffold(
         appBar: AppBar(
           title: Text("TabBarView"),
           backgroundColor: Colors.red,
           bottom: TabBar(
-            indicatorColor: Colors.white,
-            tabs: <Widget>[
-              Tab(
-                text: "电影",
-              ),
-              Tab(
-                text: "电视",
-              ),
-              Tab(
-                text: "综艺",
-              ),
-              Tab(
-                text: "读书",
-              ),
-              Tab(
-                text: "音乐",
-              ),
-              Tab(
-                text: "同城",
-              )
-            ],
-          ),
+              indicatorColor: Colors.white,
+              tabs: myTabs.map((e) => Tab(text: e)).toList()),
         ),
-        body: TabBarView(children: [
-          homeItem('电影'),
-          homeItem('电视'),
-          homeItem('综艺'),
-          homeItem('读书'),
-          homeItem('音乐'),
-          homeItem('同城'),
-        ]),
+        body: TabBarView(children: myTabs.map((e) => homeItem(e)).toList()),
       ),
     );
   }
@@ -61,7 +34,8 @@ class style_tabBar_state extends State<style_tabBar_view> {
   Widget homeItem(title) {
     return Center(
       child: Container(
-        child: Text('${title}',style: TextStyle(color: Colors.red,fontSize: 20)),
+        child:
+            Text('${title}', style: TextStyle(color: Colors.red, fontSize: 20)),
       ),
     );
   }

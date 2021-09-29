@@ -17,20 +17,20 @@ import 'package:flutter_study/components/style/style_wrap.dart';
 class Style extends StatelessWidget {
   final ScrollController _controller = ScrollController(keepScrollOffset: false);
   List<String> strItems = <String>[
-    'Widget（小部件） -> Text',
-    'Widget（小部件） -> Row,Column',
-    'Widget（小部件） -> Stack',
-    'Widget（小部件） -> Container',
-    'Widget（小部件） -> Center',
-    'Widget（小部件） -> Align',
-    'Widget（小部件） -> Expanded',
-    'Widget（小部件） -> ListView',
-    'Widget（小部件） -> GridView',
-    'Widget（小部件） -> Wrap',
-    'Widget（小部件） -> Card',
-    'Widget（小部件） -> Transform',
-    'Widget（小部件） -> PageView',
-    'Widget（小部件） -> TabBarView',
+    'Widget（小部件）-> Text',
+    'Widget（小部件）-> Row,Column',
+    'Widget（小部件）-> Stack',
+    'Widget（小部件）-> Container',
+    'Widget（小部件）-> Center',
+    'Widget（小部件）-> Align',
+    'Widget（小部件）-> Expanded',
+    'Widget（小部件）-> ListView',
+    'Widget（小部件）-> GridView',
+    'Widget（小部件）-> Wrap',
+    'Widget（小部件）-> Card',
+    'Widget（小部件）-> Transform',
+    'Widget（小部件）-> PageView',
+    'Widget（小部件）-> TabBarView',
   ];
 
   @override

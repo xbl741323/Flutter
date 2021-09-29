@@ -15,9 +15,7 @@ class _StateManageState extends State<StateManage> {
   int showNum = 0;
   bool status = true;
   changeCount() {
-    setState(() => {
-      status = !status
-    });
+    setState(() => {status = !status});
     Global.count = num;
     Global.loginFlag = !status;
     Global.savePreference('count', num);
@@ -63,11 +61,10 @@ class _StateManageState extends State<StateManage> {
               ),
               keyboardType: TextInputType.number,
               onSaved: (value) => {
-                if(value!=''){
-                  this.num = int.parse(value)
-                }else{
-                  this.num = 0
-                }
+                if (value != '')
+                  {this.num = int.parse(value)}
+                else
+                  {this.num = 0}
               },
               validator: (value) {
                 if (value == '') {
@@ -106,14 +103,16 @@ class _StateManageState extends State<StateManage> {
         child: Column(
           children: [
             Consumer<LoginModel>(
-              builder: (context,loginModel,Widget child) =>Text('显示共享变量count：' + '${loginModel.count}',
+              builder: (context, loginModel, Widget child) => Text(
+                  '显示共享变量count：' + '${loginModel.count}',
                   style: TextStyle(color: Colors.red, fontSize: 30)),
             ),
             Consumer<LoginModel>(
-               builder: (context,loginModel,Widget child) =>Text(
-                 '${loginModel.loginFlag}'
-               ),
-             ),
+              builder: (context, loginModel, Widget child) => Text(
+                '当前登录状态状态：' + '${loginModel.loginFlag}',
+                style: TextStyle(color: Colors.red),
+              ),
+            ),
           ],
         ));
   }

@@ -7,6 +7,9 @@ class style_wrap extends StatefulWidget {
 }
 
 class style_text_state extends State<style_wrap> {
+
+  var list = new List.filled(10, 1);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,20 +39,7 @@ class style_text_state extends State<style_wrap> {
           child: Wrap(
             spacing: 10,
             runSpacing: 10,
-            children: [
-              getImageItem(),
-              getImageItem(),
-              getImageItem(),
-              getImageItem(),
-              getImageItem(),
-              getImageItem(),
-              getImageItem(),
-              getImageItem(),
-              getImageItem(),
-              getImageItem(),
-              getImageItem(),
-              getImageItem()
-            ],
+            children: list.map((e) => getImageItem()).toList(),
           ),
         )
       ],

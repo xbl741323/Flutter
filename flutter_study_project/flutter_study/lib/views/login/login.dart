@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_study/api/api_login.dart';
+import 'package:flutter_study/main.dart';
 import 'package:flutter_study/states/global.dart';
 import 'package:flutter_study/views/my/my.dart';
 import 'package:flutter_study/views/state_manage/state_manage.dart';
@@ -34,7 +35,7 @@ class _LoginBodyState extends State<Login> {
       print("点击了登录按钮！");
       this.changeLoginFlag(true);
       if(Global.loginFlag){
-        Navigator.of(context).push(new MaterialPageRoute(builder: (ctx) => My()));
+        Navigator.of(context).push(new MaterialPageRoute(builder: (ctx) => MyApp()));
       }
     }
   }
@@ -42,6 +43,7 @@ class _LoginBodyState extends State<Login> {
   changeLoginFlag(status){
     Global.loginFlag = status;
     Global.savePreference('loginFlag',status);
+    print(Global.loginFlag);
   }
 
   @override
