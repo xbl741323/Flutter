@@ -48,7 +48,6 @@ class _MyState extends State<My> {
 
   Widget getMyBody(){
     LoginModel loginModel = Provider.of<LoginModel>(context);
-    if(!loginModel.loginFlag){
       return Center(
         child: GestureDetector(
           child: Container(
@@ -62,7 +61,8 @@ class _MyState extends State<My> {
             child: Consumer<LoginModel>(
                 builder: (context,loginModel,Widget child) {
                   return Text(
-                      "${loginModel.loginFlag== false?'去登录':'退出'}"
+                      "${loginModel.loginFlag== false?'去登录':'退出'}",
+                       style: TextStyle(color: Colors.white),
                   );
                 }
             ),
@@ -70,39 +70,5 @@ class _MyState extends State<My> {
           onTap: () => this.skip(),
         ),
       );
-    }else{
-      return Container(
-        alignment: Alignment.center,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              child: Text('欢迎你! master',style: TextStyle(color: Colors.red,fontSize: 20)),
-            ),
-            GestureDetector(
-              child: Container(
-                margin: EdgeInsets.only(top: 50),
-                alignment: Alignment.center,
-                width: 100,
-                height: 40,
-                decoration: BoxDecoration(
-                  color: Colors.red,
-                  borderRadius: BorderRadius.all(Radius.circular(5)),
-                ),
-                child: Consumer<LoginModel>(
-                    builder: (context,loginModel,Widget child) {
-                      return Text(
-                          "${loginModel.loginFlag== false?'去登录':'退出'}"
-                      );
-                    }
-                ),
-              ),
-              onTap: () => this.skip(),
-            ),
-          ],
-        ),
-      );
-    }
   }
 }
