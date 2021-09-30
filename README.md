@@ -23,7 +23,6 @@ Flutter它是有一统大前端的野心的，并且正在侵蚀iOS、Android这
 setState方法只能定义在State类中，执行这个方法之后，能够更新State限定的StatefulWidget及其子Widget树。
 Scaffold 我们可以将 Scaffold 理解为一个布局的容器。可以在这个容器中绘制我们的用户界面。
 
-#### 运行一个Flutter项目：1.冷启动（从零启动 1m-5m）- 2.热重载（最主要是执行build方法）- 3.热重启（重新运行整个项目）
 
 ### Flutter 常用工具类、第三方库、插件如下
 
