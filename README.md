@@ -25,7 +25,7 @@ Scaffold 我们可以将 Scaffold 理解为一个布局的容器。可以在这�
 
 #### 运行一个Flutter项目：1.冷启动（从零启动 1m-5m）- 2.热重载（最主要是执行build方法）- 3.热重启（重新运行整个项目）
 
-# 1、屏幕适配 https://github.com/OpenFlutter/flutter_screenutil
+### 1、屏幕适配 https://github.com/OpenFlutter/flutter_screenutil
 flutter_screenutil: ^1.0.2
 
 # 2、网络请求库 https://github.com/flutterchina/dio
