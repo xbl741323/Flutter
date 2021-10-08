@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_study/api/api_login.dart';
 
 class PropertyDetail extends StatefulWidget {
@@ -55,8 +56,11 @@ class PropertyDetailState extends State<PropertyDetail> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.network(
-                    this.propertyInfo['coverUrl'] != ''?
-                     'https://static.wotao.com/'+'${this.propertyInfo['coverUrl']}':'https://static.wotao.com/'+'${this.propertyInfo['coverUrls'][0]['url']}',
+                    this.propertyInfo['coverUrl'] != ''
+                        ? 'https://static.wotao.com/' +
+                            '${this.propertyInfo['coverUrl']}'
+                        : 'https://static.wotao.com/' +
+                            '${this.propertyInfo['coverUrls'][0]['url']}',
                     width: double.infinity,
                   ),
                   Container(
@@ -84,6 +88,11 @@ class PropertyDetailState extends State<PropertyDetail> {
                         .propertyInfo['categories']
                         .map<Widget>((e) => getItem(e))
                         .toList(),
+                  ),
+                  Container(
+                    child: Html(
+                      data: this.propertyInfo['content'],
+                    ),
                   )
                 ],
               ),
@@ -100,7 +109,8 @@ class PropertyDetailState extends State<PropertyDetail> {
       decoration: BoxDecoration(
           color: Colors.red,
           borderRadius: BorderRadius.all(Radius.circular(5))),
-      child: Text('${e['optionName']}', style: TextStyle(fontSize: 12, color: Colors.white)),
+      child: Text('${e['optionName']}',
+          style: TextStyle(fontSize: 12, color: Colors.white)),
     );
   }
 }
