@@ -20,7 +20,7 @@ class PropertyDetailState extends State<PropertyDetail> {
       setState(() {
         this.propertyInfo = res.data['data']['detail'];
       });
-      print(this.propertyInfo['categories']);
+      print(this.propertyInfo['coverUrls'][0]);
     });
   }
 
@@ -55,8 +55,8 @@ class PropertyDetailState extends State<PropertyDetail> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Image.network(
-                    'https://static.wotao.com/' +
-                        '${this.propertyInfo['coverUrl']}',
+                    this.propertyInfo['coverUrl'] != ''?
+                     'https://static.wotao.com/'+'${this.propertyInfo['coverUrl']}':'https://static.wotao.com/'+'${this.propertyInfo['coverUrls'][0]['url']}',
                     width: double.infinity,
                   ),
                   Container(
