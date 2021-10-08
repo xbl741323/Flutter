@@ -20,11 +20,21 @@ class api_login {
     );
   }
 
-  // 获取测试信息
-  static getTestData() {
+  // 获取知产列表信息
+  static getTestData(Map<String,dynamic> params) {
     return Http.request(
-        url: "/policy/detail?number=XM20210525001&type=4&token=2",
-        method: 'get'
+        url: "/policy/index/list",
+        method: 'post',
+        params: params
+    );
+  }
+
+  // 获取知产详情信息
+  static getTestDetail(Map<String,dynamic> params) {
+    return Http.request(
+        url: "/policy/detail",
+        method: 'get',
+        params: params
     );
   }
 }
