@@ -21,7 +21,7 @@ class PropertyDetailState extends State<PropertyDetail> {
       setState(() {
         this.propertyInfo = res.data['data']['detail'];
       });
-      print(this.propertyInfo['coverUrls'][0]);
+      print(this.propertyInfo['content']);
     });
   }
 
@@ -90,8 +90,16 @@ class PropertyDetailState extends State<PropertyDetail> {
                         .toList(),
                   ),
                   Container(
+                    // 显示html标签内容
                     child: Html(
                       data: this.propertyInfo['content'],
+                      // 自定义图片显示逻辑
+                      customImageRenders: {
+                        (attr, _) =>
+                                attr["src"] != null &&
+                                attr["src"].startsWith("//static"):
+                            networkImageRender(mapUrl: (url) => "https:" + url),
+                      },
                     ),
                   )
                 ],
