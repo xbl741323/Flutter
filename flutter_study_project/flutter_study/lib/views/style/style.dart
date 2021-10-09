@@ -38,6 +38,25 @@ class Style extends StatelessWidget {
     'Widget  ->  AnimatedContainer',
   ];
 
+  List<Widget> mainList = [
+    style_text(),
+    style_row_and_colum(),
+    style_stack(),
+    style_container(),
+    style_center(),
+    style_align(),
+    style_expanded(),
+    style_listview(),
+    style_gridview(),
+    style_wrap(),
+    style_card(),
+    style_transform(),
+    style_page_view(),
+    style_tabBar_view(),
+    style_clipoval(),
+    style_animate_container()
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,72 +90,8 @@ class Style extends StatelessWidget {
         trailing:
             new Icon(Icons.keyboard_arrow_right, color: Colors.deepPurple),
         onTap: () {
-          switch (index) {
-            case 0:
-              Navigator.of(context)
-                  .push(new MaterialPageRoute(builder: (ctx) => style_text()));
-              break;
-            case 1:
-              Navigator.of(context).push(new MaterialPageRoute(
-                  builder: (ctx) => style_row_and_colum()));
-              break;
-            case 2:
-              Navigator.of(context)
-                  .push(new MaterialPageRoute(builder: (ctx) => style_stack()));
-              break;
-            case 3:
-              Navigator.of(context).push(
-                  new MaterialPageRoute(builder: (ctx) => style_container()));
-              break;
-            case 4:
-              Navigator.of(context).push(
-                  new MaterialPageRoute(builder: (ctx) => style_center()));
-              break;
-            case 5:
-              Navigator.of(context)
-                  .push(new MaterialPageRoute(builder: (ctx) => style_align()));
-              break;
-            case 6:
-              Navigator.of(context).push(
-                  new MaterialPageRoute(builder: (ctx) => style_expanded()));
-              break;
-            case 7:
-              Navigator.of(context).push(
-                  new MaterialPageRoute(builder: (ctx) => style_listview()));
-              break;
-            case 8:
-              Navigator.of(context).push(
-                  new MaterialPageRoute(builder: (ctx) => style_gridview()));
-              break;
-            case 9:
-              Navigator.of(context)
-                  .push(new MaterialPageRoute(builder: (ctx) => style_wrap()));
-              break;
-            case 10:
-              Navigator.of(context)
-                  .push(new MaterialPageRoute(builder: (ctx) => style_card()));
-              break;
-            case 11:
-              Navigator.of(context).push(
-                  new MaterialPageRoute(builder: (ctx) => style_transform()));
-              break;
-            case 12:
-              Navigator.of(context).push(
-                  new MaterialPageRoute(builder: (ctx) => style_page_view()));
-              break;
-            case 13:
-              Navigator.of(context).push(
-                  new MaterialPageRoute(builder: (ctx) => style_tabBar_view()));
-              break;
-            case 14:
-              Navigator.of(context).push(
-                  new MaterialPageRoute(builder: (ctx) => style_clipoval()));
-              break;
-            case 15:
-              Navigator.of(context).push(
-                  new MaterialPageRoute(builder: (ctx) => style_animate_container()));
-              break;
-          }
+          Navigator.of(context)
+              .push(new MaterialPageRoute(builder: (ctx) => mainList[index]));
         });
   }
 }
