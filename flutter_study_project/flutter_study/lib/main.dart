@@ -49,31 +49,73 @@ class _MyHomePageState extends State<MyHomePage> {
     return getMainBody();
   }
 
-  Widget getMainBody(){
+  Widget getMainBody() {
     LoginModel loginModel = Provider.of<LoginModel>(context);
-      return Scaffold(
-          bottomNavigationBar: BottomNavigationBar(
-            unselectedFontSize: 12, // 设置不选中时的字体大小
-            selectedFontSize: 12, // 设置选中时的字体大小
-            type: BottomNavigationBarType.fixed,
-            currentIndex: _currentIndex,
-            onTap: (int index) {
-              setState(() {
-                _currentIndex = index;
-              });
-            },
-            items: [
-              TabBarItem(Icon(Icons.whatshot_outlined), "样式"),
-              TabBarItem(Icon(Icons.add_to_queue_sharp), "Http"),
-              TabBarItem(Icon(Icons.api_sharp), "JSON序列化"),
-              TabBarItem(Icon(Icons.backup_outlined), "状态管理"),
-              TabBarItem(Icon(Icons.account_circle), "我的")
+    return Scaffold(
+        drawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.deepPurple,
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      '阿晴的主页',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 24,
+                      ),
+                    ),
+                    Container(
+                      margin: EdgeInsets.only(left: 10,top: 10),
+                      child: ClipOval(
+                        child: Image.asset("assets/images/keqing.png",width: 80,height: 80),
+                      )
+                    )
+                  ],
+                )
+              ),
+              ListTile(
+                leading: Icon(Icons.message),
+                title: Text('最新通知'),
+              ),
+              ListTile(
+                leading: Icon(Icons.account_circle),
+                title: Text('账户信息'),
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('设置'),
+              ),
             ],
           ),
-          body: IndexedStack(
-            index: _currentIndex,
-            children: [Style(), Network(), Json(), StateManage(), My()],
-          ) // This trailing comma makes auto-formatting nicer for build methods.
-      );
+        ),
+        bottomNavigationBar: BottomNavigationBar(
+          unselectedFontSize: 12, // 设置不选中时的字体大小
+          selectedFontSize: 12, // 设置选中时的字体大小
+          type: BottomNavigationBarType.fixed,
+          currentIndex: _currentIndex,
+          onTap: (int index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          items: [
+            TabBarItem(Icon(Icons.whatshot_outlined), "样式"),
+            TabBarItem(Icon(Icons.add_to_queue_sharp), "Http"),
+            TabBarItem(Icon(Icons.api_sharp), "JSON序列化"),
+            TabBarItem(Icon(Icons.backup_outlined), "状态管理"),
+            TabBarItem(Icon(Icons.account_circle), "我的")
+          ],
+        ),
+        body: IndexedStack(
+          index: _currentIndex,
+          children: [Style(), Network(), Json(), StateManage(), My()],
+        ) // This trailing comma makes auto-formatting nicer for build methods.
+        );
   }
 }

@@ -11,12 +11,36 @@ class _NetworkState extends State<Network> {
   final ScrollController _controller =
       ScrollController(keepScrollOffset: false);
   List<dynamic> dataList = <dynamic>[];
+  int current = 1;
+  int size = 10;
+  int total = 0;
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
     this.getData();
+    //设置监听
+    _controller.addListener(() {
+      if (_controller.position.pixels == _controller.position.maxScrollExtent) {
+        print('滑动到了最底部');
+        getMore();
+      }
+    });
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _controller.dispose();
+  }
+
+  getMore() {
+    setState(() {
+      current += 1;
+    });
+    getData();
   }
 
   skipDetail(number) {
@@ -34,16 +58,18 @@ class _NetworkState extends State<Network> {
       ],
       'isHotSpot': false,
       'isNewest': false,
-      'size': 25,
-      'start': 1,
+      'size': size,
+      'start': current,
       'type': 4
     };
     api_login.getTestData(params).then((res) {
       if (res.data['code'] == 1000) {
         setState(() {
-          this.dataList = res.data['data']['records'];
+          this.dataList.addAll(res.data['data']['records']);
+          total = res.data['data']['total'];
         });
-        print(this.dataList);
+        print(res.data['data']['total']);
+        print(this.dataList.length);
       }
     });
   }
@@ -58,17 +84,53 @@ class _NetworkState extends State<Network> {
           margin: EdgeInsets.only(top: 5),
           padding: EdgeInsets.only(top: 2, right: 5, bottom: 5, left: 5),
           child: ListView.builder(
-              controller: _controller, //这里的controller一定要赋值，这样才能保证是同一个控制器中
-              itemCount: dataList.length,
-              shrinkWrap: true,
-              itemBuilder: (BuildContext context, int index) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [getItem(index)],
-                );
-              }),
+            controller: _controller, //这里的controller一定要赋值，这样才能保证是同一个控制器中
+            itemCount: dataList.length + 1,
+            shrinkWrap: true,
+            itemBuilder: _renderRow,
+          ),
         ));
+  }
+
+  // 显示列表 + 上拉加载更多
+  Widget _renderRow(BuildContext context, int index) {
+    if (index < dataList.length) {
+      return Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [getItem(index)],
+      );
+    } else {
+      if (total > dataList.length) {
+        return _getMoreWidget(true);
+      } else {
+        return _getMoreWidget(false);
+      }
+    }
+  }
+
+  // 显示加载更多样式
+  Widget _getMoreWidget(status) {
+    return Center(
+      child: Padding(
+        padding: EdgeInsets.all(10.0),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              status == true ? '加载中...' : '已经到底了...',
+              style: TextStyle(fontSize: 16.0, color: Colors.deepPurple),
+            ),
+            status == true
+                ? CircularProgressIndicator(
+                    strokeWidth: 2.0,
+                  )
+                : Text('')
+          ],
+        ),
+      ),
+    );
   }
 
   // 列表单项

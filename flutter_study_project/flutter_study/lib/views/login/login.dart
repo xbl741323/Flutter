@@ -18,7 +18,7 @@ class _LoginBodyState extends State<Login> {
   GlobalKey<FormState> formGlobalKey = GlobalKey(); // 给form表单创建key值
 
   userLogin() {
-    if(phone != ''&&password != ''){
+    if (phone != '' && password != '') {
       var params = {
         'accountNo': "17730078715",
         'accountPassword': "0ae16aae193ee3e226e5d06db285aa7b",
@@ -34,15 +34,16 @@ class _LoginBodyState extends State<Login> {
       print(password);
       print("点击了登录按钮！");
       this.changeLoginFlag(true);
-      if(Global.loginFlag){
-        Navigator.of(context).push(new MaterialPageRoute(builder: (ctx) => MyApp()));
+      if (Global.loginFlag) {
+        Navigator.of(context)
+            .push(new MaterialPageRoute(builder: (ctx) => MyApp()));
       }
     }
   }
 
-  changeLoginFlag(status){
+  changeLoginFlag(status) {
     Global.loginFlag = status;
-    Global.savePreference('loginFlag',status);
+    Global.savePreference('loginFlag', status);
     print(Global.loginFlag);
   }
 
@@ -92,7 +93,7 @@ class _LoginBodyState extends State<Login> {
               ),
               onSaved: (value) => {this.phone = value},
               validator: (value) {
-                if (value == '') {
+                if (value.trim() == '') {
                   return "请输入手机号";
                 }
                 return null;
@@ -107,9 +108,10 @@ class _LoginBodyState extends State<Login> {
                 hintText: "请输入您的密码",
                 hintStyle: TextStyle(color: Color(0xFF999999), fontSize: 12),
               ),
+              obscureText: true, // 密码显示加密
               onSaved: (value) => {this.password = value},
               validator: (value) {
-                if (value == '') {
+                if (value.trim() == '') {
                   return "请输入密码";
                 }
                 return null;
