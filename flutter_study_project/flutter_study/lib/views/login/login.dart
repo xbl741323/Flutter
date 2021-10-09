@@ -72,7 +72,7 @@ class _LoginBodyState extends State<Login> {
   Widget getDesc() {
     return Container(
       child: Text('欢迎登录Flutter测试页',
-          style: TextStyle(color: Colors.red, fontSize: 20)),
+          style: TextStyle(color: Colors.deepPurple, fontSize: 20)),
     );
   }
 

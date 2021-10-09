@@ -55,7 +55,7 @@ class _MyState extends State<My> {
             width: 100,
             height: 40,
             decoration: BoxDecoration(
-              color: Colors.red,
+              color: Colors.deepPurple,
               borderRadius: BorderRadius.all(Radius.circular(5)),
             ),
             child: Consumer<LoginModel>(

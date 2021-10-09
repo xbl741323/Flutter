@@ -115,7 +115,7 @@ class PropertyDetailState extends State<PropertyDetail> {
       alignment: Alignment.center,
       padding: EdgeInsets.only(left: 5, right: 5, top: 1, bottom: 2),
       decoration: BoxDecoration(
-          color: Colors.red,
+          color: Colors.deepPurple,
           borderRadius: BorderRadius.all(Radius.circular(5))),
       child: Text('${e['optionName']}',
           style: TextStyle(fontSize: 12, color: Colors.white)),

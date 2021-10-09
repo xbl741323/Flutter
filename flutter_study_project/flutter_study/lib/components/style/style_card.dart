@@ -29,7 +29,7 @@ class style_card_state extends State<style_card> {
         Text('在Flutter中，Card具有圆角和阴影，这使它有一个3D效果。更改Card的elevation属性允许您控制投影效果。'),
         Card(
           margin: EdgeInsets.only(top: 10),
-          shadowColor: Colors.red,
+          shadowColor: Colors.deepPurple,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(0.0)), // 设置圆角大小
           ),

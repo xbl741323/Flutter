@@ -21,7 +21,7 @@ class style_tabBar_state extends State<style_tabBar_view> {
       child: Scaffold(
         appBar: AppBar(
           title: Text("TabBarView"),
-          backgroundColor: Colors.red,
+          backgroundColor: Colors.deepPurple,
           bottom: TabBar(
               indicatorColor: Colors.white,
               tabs: myTabs.map((e) => Tab(text: e)).toList()),
@@ -35,7 +35,7 @@ class style_tabBar_state extends State<style_tabBar_view> {
     return Center(
       child: Container(
         child:
-            Text('${title}', style: TextStyle(color: Colors.red, fontSize: 20)),
+            Text('${title}', style: TextStyle(color: Colors.deepPurple, fontSize: 20)),
       ),
     );
   }

@@ -47,7 +47,7 @@ class Style extends StatelessWidget {
       child: ListView.separated(
         itemCount: strItems.length,
         separatorBuilder: (BuildContext context, int index) {
-          return Divider(height: 1.0, color: Colors.red);
+          return Divider(height: 1.0, color: Colors.deepPurple);
         },
         controller: _controller,
         itemBuilder: (context, index) {
@@ -63,9 +63,9 @@ class Style extends StatelessWidget {
       BuildContext context, String strItem, index) {
       return new ListTile(
         isThreeLine: false,
-        leading: new Icon(Icons.auto_awesome, color: Colors.red),
+        leading: new Icon(Icons.auto_awesome, color: Colors.deepPurple),
         title: new Text(strItem),
-        trailing: new Icon(Icons.keyboard_arrow_right, color: Colors.red),
+        trailing: new Icon(Icons.keyboard_arrow_right, color: Colors.deepPurple),
         onTap: () {
           switch (index) {
             case 0:

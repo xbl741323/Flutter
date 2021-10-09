@@ -31,7 +31,7 @@ class style_page_view_state extends State<style_page_view> {
         Container(
           margin: EdgeInsets.only(top:10),
           height: 200,
-          color: Colors.red,
+          color: Colors.deepPurple,
           alignment: Alignment.center,
           child: PageView.builder(
               itemCount: 10000,
@@ -47,7 +47,7 @@ class style_page_view_state extends State<style_page_view> {
   Widget getPageItem(index) {
     return Container(
       alignment: Alignment.center,
-      color: Colors.red,
+      color: Colors.deepPurple,
       child: Text(
         '${index}',
         style: TextStyle(color: Colors.white, fontSize: 20),

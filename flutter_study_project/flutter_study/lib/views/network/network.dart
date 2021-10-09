@@ -79,7 +79,7 @@ class _NetworkState extends State<Network> {
         padding: EdgeInsets.only(left: 10, right: 2, bottom: 10),
         margin: EdgeInsets.only(bottom: 7),
         decoration: BoxDecoration(
-            color: Colors.red,
+            color: Colors.deepPurple,
             borderRadius: BorderRadius.all(Radius.circular(10))),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,

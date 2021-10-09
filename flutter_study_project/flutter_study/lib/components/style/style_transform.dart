@@ -30,7 +30,7 @@ class style_transform_state extends State<style_transform> {
         Transform(
           child: Container(
             margin: EdgeInsets.only(top: 100),
-            color: Colors.red,
+            color: Colors.deepPurple,
             child: Image.asset("assets/images/one.jpg",width: 200,height: 200,fit: BoxFit.fill),
           ),
           alignment: Alignment.center,

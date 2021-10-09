@@ -105,12 +105,12 @@ class _StateManageState extends State<StateManage> {
             Consumer<LoginModel>(
               builder: (context, loginModel, Widget child) => Text(
                   '显示共享变量count：' + '${loginModel.count}',
-                  style: TextStyle(color: Colors.red, fontSize: 30)),
+                  style: TextStyle(color: Colors.deepPurple, fontSize: 30)),
             ),
             Consumer<LoginModel>(
               builder: (context, loginModel, Widget child) => Text(
                 '当前登录状态状态：' + '${loginModel.loginFlag}',
-                style: TextStyle(color: Colors.red),
+                style: TextStyle(color: Colors.deepPurple),
               ),
             ),
           ],

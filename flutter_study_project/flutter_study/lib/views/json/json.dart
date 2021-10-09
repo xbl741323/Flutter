@@ -10,7 +10,7 @@ class Json extends StatelessWidget {
       body: Center(
         child: Text(
           "Json序列化",
-          style: TextStyle(fontSize: 30),
+          style: TextStyle(fontSize: 30,color: Colors.deepPurple),
         ),
       ),
     );

@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: true, //控制右上角debug显隐
         title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.red,
+          primarySwatch: Colors.deepPurple,
         ),
         home: MyHomePage(title: 'Flutter深度学习'),
       ),
