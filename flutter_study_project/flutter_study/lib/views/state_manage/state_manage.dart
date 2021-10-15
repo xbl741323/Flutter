@@ -61,7 +61,7 @@ class _StateManageState extends State<StateManage> {
               ),
               keyboardType: TextInputType.number,
               onSaved: (value) => {
-                if (value != '')
+                if (value.trim() != '')
                   {this.num = int.parse(value)}
                 else
                   {this.num = 0}
