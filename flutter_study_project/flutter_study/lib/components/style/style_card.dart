@@ -40,7 +40,7 @@ class style_card_state extends State<style_card> {
               Image.asset("assets/images/one.jpg"),
               Container(
                 padding: EdgeInsets.only(top: 5,left: 5,right: 5,bottom: 10),
-                child: Text("PS5决战群玉阁KV_2048x1536"),
+                child: Text("PS魈KV_1920x1200"),
               )
             ],
           ),

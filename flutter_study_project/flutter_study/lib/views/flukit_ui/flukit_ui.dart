@@ -1,22 +1,32 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_study/components/flukit_ui/area_select/city_select.dart';
+import 'package:flutter_study/components/common/area_select/city_select.dart';
+import 'package:flutter_study/components/common/city_picker/city_pick.dart';
+import 'package:flutter_study/components/common/swipper/swiper_page.dart';
+import 'package:flutter_study/components/common/other_picker/other_picker.dart';
+
 
 class Flukit_ui extends StatelessWidget {
   final ScrollController _controller =
   ScrollController(keepScrollOffset: false);
   List<String> strItems = <String>[
     '地区选择器',
+    '轮播图',
+    'CityPickers',
+    '其它选择器',
   ];
 
   List<Widget> mainList = [
     city_select(),
+    swiper_page(),
+    city_picker(),
+    other_picker()
   ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text("Flukit UI"),
+          title: Text("Flukit UI和其它UI组件"),
         ),
         body: getBody());
   }

@@ -107,7 +107,7 @@ class _MyHomePageState extends State<MyHomePage> {
           items: [
             TabBarItem(Icon(Icons.whatshot_outlined), "样式"),
             TabBarItem(Icon(Icons.add_to_queue_sharp), "Http"),
-            TabBarItem(Icon(Icons.api_sharp), "Flukit"),
+            TabBarItem(Icon(Icons.api_sharp), "UI组件"),
             TabBarItem(Icon(Icons.backup_outlined), "状态管理"),
             TabBarItem(Icon(Icons.account_circle), "我的")
           ],
