@@ -15,19 +15,14 @@ class city_select extends StatefulWidget {
 
 // ignore: camel_case_types
 class city_select_state extends State<city_select> {
-  var currentCity = "北京市";
+  var currentCity = "安徽";
   List<CityModel> cityList = [];
   List<CityModel> _hotCityList = [];
 
   @override
   void initState() {
     super.initState();
-    _hotCityList.add(CityModel(name: '北京市', tagIndex: '★'));
-    _hotCityList.add(CityModel(name: '广州市', tagIndex: '★'));
-    _hotCityList.add(CityModel(name: '成都市', tagIndex: '★'));
-    _hotCityList.add(CityModel(name: '深圳市', tagIndex: '★'));
-    _hotCityList.add(CityModel(name: '杭州市', tagIndex: '★'));
-    _hotCityList.add(CityModel(name: '武汉市', tagIndex: '★'));
+    // _hotCityList.add(CityModel(name: '安徽', tagIndex: '★'));
     cityList.addAll(_hotCityList);
     SuspensionUtil.setShowSuspensionStatus(cityList);
 
@@ -79,6 +74,23 @@ class city_select_state extends State<city_select> {
     setState(() {});
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("地区选择器"),
+      ),
+      resizeToAvoidBottomInset: false,
+      body: SafeArea(
+          child: Column(
+        children: [
+          header(),
+          container(),
+        ],
+      )),
+    );
+  }
+
   Widget header() {
     return Container(
       color: Colors.white,
@@ -118,67 +130,62 @@ class city_select_state extends State<city_select> {
     );
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("地区选择器"),
-      ),
-      resizeToAvoidBottomInset: false,
-      body: SafeArea(
-          child: Column(
-        children: [
-          header(),
-          Expanded(
-            child: Material(
-              color: Color(0x80000000),
-              child: Card(
-                clipBehavior: Clip.hardEdge,
-                margin: const EdgeInsets.only(left: 0, top: 5, right: 0),
-                shape: const RoundedRectangleBorder(
-                  borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(4.0),
-                      topRight: Radius.circular(4.0)),
-                ),
-                child: Column(
-                  children: [
-                    Container(
-                      alignment: Alignment.centerLeft,
-                      padding: const EdgeInsets.only(left: 15.0),
-                      height: 50.0,
-                      child: Text("当前城市: ${currentCity}"),
-                    ),
-                    Expanded(
-                      child: AzListView(
-                        data: cityList,
-                        itemCount: cityList.length,
-                        itemBuilder: (BuildContext context, int index) {
-                          CityModel model = cityList[index];
-                          return ListTile(
-                            title: Text(model.name),
-                            onTap: () {
-                              print(model.name);
-                              editCity(model.name);
-                            },
-                          );
-                          ;
-                        },
-                        padding: EdgeInsets.zero,
-                        susItemBuilder: (BuildContext context, int index) {
-                          CityModel model = cityList[index];
-                          String tag = model.getSuspensionTag();
-                          return getSusItem(context, tag);
-                        },
-                        indexBarData: ['★', ...kIndexBarData],
-                      ),
-                    )
-                  ],
-                ),
-              ),
-            ),
+  Widget container() {
+    return Expanded(
+      child: Material(
+        color: Color(0x80000000),
+        child: Card(
+          clipBehavior: Clip.hardEdge,
+          margin: const EdgeInsets.only(left: 0, top: 5, right: 0),
+          shape: const RoundedRectangleBorder(
+            borderRadius: const BorderRadius.only(
+                topLeft: Radius.circular(4.0), topRight: Radius.circular(4.0)),
           ),
-        ],
-      )),
+          child: Column(
+            children: [
+              Container(
+                alignment: Alignment.centerLeft,
+                padding: const EdgeInsets.only(left: 15.0),
+                height: 50.0,
+                child: Text("当前城市: ${currentCity}"),
+              ),
+              Expanded(
+                child: AzListView(
+                  data: cityList,
+                  itemCount: cityList.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    CityModel model = cityList[index];
+                    return ListTile(
+                      title: Text(model.name),
+                      onTap: () {
+                        print(model);
+                        print(model.name);
+                        print(model.id);
+                        editCity(model.name);
+                      },
+                    );
+                    ;
+                  },
+                  padding: EdgeInsets.zero,
+                  susItemBuilder: (BuildContext context, int index) {
+                    CityModel model = cityList[index];
+                    String tag = model.getSuspensionTag();
+                    return getSusItem(context, tag);
+                  },
+                  indexBarData: ['★', ...kIndexBarData],
+                  // indexBarData: [
+                  //   ...[
+                  //     'A',
+                  //     'J',
+                  //     'Q',
+                  //   ]
+                  // ],
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
     );
   }
 

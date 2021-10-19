@@ -1,20 +1,24 @@
 import 'package:azlistview/azlistview.dart';
 
 class CityModel extends ISuspensionBean {
+  int id;
   String name;
   String tagIndex;
   String namePinyin;
 
   CityModel({
+    this.id,
     this.name,
     this.tagIndex,
     this.namePinyin,
   });
 
-  CityModel.fromJson(Map<String, dynamic> json)
-      : name = json['name'] == null ? "" : json['name'];
-
+  CityModel.fromJson(Map<String, dynamic> json) {
+    name = json['name'] == null ? "" : json['name'];
+    id = json['id'] == null ? "" : json['id'];
+  }
   Map<String, dynamic> toJson() => {
+        'id': id,
         'name': name,
         'tagIndex': tagIndex,
         'namePinyin': namePinyin,
@@ -25,5 +29,12 @@ class CityModel extends ISuspensionBean {
   String getSuspensionTag() => tagIndex;
 
   @override
-  String toString() => "CityBean {" + " \"name\":\"" + name + "\"" + '}';
+  String toString() =>
+      "{" +
+      " \"name\":\"" +
+      name +
+      "\"" +
+      " \"id\":\"" +
+      id.toString() +
+      "\"" '}';
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/states/global.dart';
 import 'package:flutter_study/states/global_notifier.dart';
+import 'package:flutter_study/views/account/account.dart';
 import 'package:flutter_study/views/flukit_ui/flukit_ui.dart';
 import 'package:flutter_study/views/login/login.dart';
 import 'package:flutter_study/views/my/my.dart';
@@ -44,6 +45,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
 
+  toAccont() {
+    Navigator.of(context)
+        .push(new MaterialPageRoute(builder: (ctx) => Account()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return getMainBody();
@@ -57,28 +63,27 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: EdgeInsets.zero,
             children: [
               DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.deepPurple,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '阿晴的主页',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 24,
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '阿晴的主页',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                        ),
                       ),
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(left: 10,top: 10),
-                      child: ClipOval(
-                        child: Image.asset("assets/images/keqing.png",width: 80,height: 80),
-                      )
-                    )
-                  ],
-                )
-              ),
+                      Container(
+                          margin: EdgeInsets.only(left: 10, top: 10),
+                          child: ClipOval(
+                            child: Image.asset("assets/images/keqing.png",
+                                width: 80, height: 80),
+                          ))
+                    ],
+                  )),
               ListTile(
                 leading: Icon(Icons.message),
                 title: Text('最新通知'),
@@ -86,6 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ListTile(
                 leading: Icon(Icons.account_circle),
                 title: Text('账户信息'),
+                onTap: () => {toAccont()},
               ),
               ListTile(
                 leading: Icon(Icons.settings),
