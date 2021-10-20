@@ -5,8 +5,8 @@ import 'package:date_format/date_format.dart';
 const double kPickerHeight = 216.0;
 const double kItemHeight = 40.0;
 const Color kBtnColor = Color(0xFF323232); //50
-const Color kTitleColor = Color(0xFF787878); //120
-const double kTextFontSize = 17.0;
+const Color kTitleColor = Color(0xFF323232); //120
+const double kTextFontSize = 16.0;
 
 typedef StringClickCallback = void Function(int selectIndex, Object selectStr);
 typedef ArrayClickCallback = void Function(

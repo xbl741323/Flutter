@@ -9,6 +9,13 @@ class Account extends StatefulWidget {
 }
 
 class AccountState extends State<Account> {
+  List<CheckBoxModel> industryData = [
+    CheckBoxModel(201, '行业不限', false),
+    CheckBoxModel(16, 'A农林牧渔', false),
+    CheckBoxModel(17, 'B采矿业', false),
+    CheckBoxModel(18, 'C制造业', false)
+  ];
+
   List<dynamic> strItems = <dynamic>[
     {'name': '账户类型', 'cValue': '', 'cId': ''},
     {'name': '单位logo', 'cValue': '', 'cId': ''},
@@ -51,7 +58,7 @@ class AccountState extends State<Account> {
   ];
 
   /// 销售额
-  List salesName = ["2000万以下", "2000-4999万", "5000万-2亿", "C制造业"];
+  List salesName = ["2000万以下", "2000-4999万", "5000万-2亿", "2亿以上"];
   List sales = [
     {'id': 23, 'name': "2000万以下"},
     {'id': 25, 'name': "2000-4999万"},
@@ -72,11 +79,7 @@ class AccountState extends State<Account> {
       ScrollController(keepScrollOffset: false);
 
   showSelect(val, pIndex) {
-    if (pIndex == 0 ||
-        pIndex == 3 ||
-        pIndex == 4 ||
-        pIndex == 7 ||
-        pIndex == 9) {
+    if (pIndex == 0 || pIndex == 3 || pIndex == 7 || pIndex == 9) {
       PickerTool.showStringPicker(context,
           data: filterClassifyName(pIndex),
           normalIndex: 0,
@@ -87,10 +90,97 @@ class AccountState extends State<Account> {
       });
     } else if (pIndex == 5) {
       getAreaWidget();
+    } else if (pIndex == 1) {
+    } else if (pIndex == 4) {
+      getIndustrySelect();
     } else {
       Navigator.of(context).push(
           new MaterialPageRoute(builder: (ctx) => ItemUpdate(index: pIndex)));
     }
+  }
+
+  getIndustrySelect() {
+    showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Container(
+            padding: EdgeInsets.only(top: 2, bottom: 5),
+            height: 300,
+            child: Column(
+              children: [
+                Container(
+                  padding: EdgeInsets.only(top: 5, bottom: 12),
+                  decoration: BoxDecoration(
+                    border: Border(bottom: BorderSide(color: Colors.grey[200])),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                          margin: EdgeInsets.only(left: 15, top: 5),
+                          child: GestureDetector(
+                            child: Text(
+                              '取消',
+                              style: TextStyle(
+                                  fontSize: 16, color: Color(0xFF323232)),
+                            ),
+                            onTap: () => {Navigator.pop(context)},
+                          )),
+                      Container(
+                        child: Text(
+                          '行业类型',
+                          style:
+                              TextStyle(fontSize: 16, color: Color(0xFF323232)),
+                        ),
+                      ),
+                      Container(
+                          margin: EdgeInsets.only(right: 15, top: 5),
+                          child: GestureDetector(
+                            child: Text(
+                              '确定',
+                              style: TextStyle(
+                                  fontSize: 16, color: Color(0xFF323232)),
+                            ),
+                            onTap: () => {Navigator.pop(context)},
+                          ))
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: EdgeInsets.only(top: 10),
+                  height: 220,
+                  child: ListView.builder(
+                      itemCount: industryData.length,
+                      itemBuilder: (context, index) {
+                        return getItemCheckbox(industryData[index]);
+                      }),
+                )
+              ],
+            ),
+          );
+        });
+  }
+
+  /// CheckBox复选框
+  Widget getItemCheckbox(CheckBoxModel item) {
+    return Container(
+      height: 20,
+      margin: EdgeInsets.only(bottom: 10),
+      child: Row(
+        children: [
+          Checkbox(
+              value: item.status,
+              onChanged: (value) {
+                print(value);
+                setState(() {
+                  item.status = value;
+                });
+              }),
+          Text("${item.name}")
+        ],
+      ),
+    );
   }
 
   getAreaWidget() async {
@@ -107,7 +197,8 @@ class AccountState extends State<Account> {
         ));
     print(result);
     setState(() {
-      strItems[5]['cValue'] = "${result.provinceName}/${result.cityName}/${result.areaName}";
+      strItems[5]['cValue'] =
+          "${result.provinceName}/${result.cityName}/${result.areaName}";
     });
   }
 
@@ -244,4 +335,19 @@ class AccountState extends State<Account> {
             ),
     );
   }
+}
+
+class CheckBoxModel extends Object {
+  int id;
+  String name;
+  bool status;
+
+  CheckBoxModel(this.id, this.name, this.status);
+  CheckBoxModel.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    name = json['name'];
+    status = json['status'];
+  }
+
+  Map<String, dynamic> toJson() => {'id': id, 'name': name, 'status': status};
 }

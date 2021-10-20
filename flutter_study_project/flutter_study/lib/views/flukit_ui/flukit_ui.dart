@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/components/common/area_select/city_select.dart';
 import 'package:flutter_study/components/common/city_picker/city_pick.dart';
+import 'package:flutter_study/components/common/image_picker/image_picker.dart';
 import 'package:flutter_study/components/common/swipper/swiper_page.dart';
 import 'package:flutter_study/components/common/other_picker/other_picker.dart';
 
@@ -13,13 +14,15 @@ class Flukit_ui extends StatelessWidget {
     '轮播图',
     'CityPickers',
     '其它选择器',
+    'Image Picker'
   ];
 
   List<Widget> mainList = [
     city_select(),
     swiper_page(),
     city_picker(),
-    other_picker()
+    other_picker(),
+    image_picker()
   ];
 
   @override
