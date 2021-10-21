@@ -85,10 +85,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     ],
                   )),
               ListTile(
-                leading: Icon(Icons.message),
-                title: Text('最新通知'),
-              ),
-              ListTile(
                 leading: Icon(Icons.account_circle),
                 title: Text('账户信息'),
                 onTap: () => {toAccont()},

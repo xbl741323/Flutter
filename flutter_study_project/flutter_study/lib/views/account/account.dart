@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:city_pickers/city_pickers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_study/components/common/other_picker/PickerTool.dart';
@@ -9,6 +11,7 @@ class Account extends StatefulWidget {
 }
 
 class AccountState extends State<Account> {
+  List idList = [];
   List<CheckBoxModel> industryData = [
     CheckBoxModel(201, '行业不限', false),
     CheckBoxModel(16, 'A农林牧渔', false),
@@ -92,78 +95,82 @@ class AccountState extends State<Account> {
       getAreaWidget();
     } else if (pIndex == 1) {
     } else if (pIndex == 4) {
-      getIndustrySelect();
+      getIndustrySelect(pIndex);
     } else {
       Navigator.of(context).push(
           new MaterialPageRoute(builder: (ctx) => ItemUpdate(index: pIndex)));
     }
   }
 
-  getIndustrySelect() {
+  getIndustrySelect(pIndex) {
     showModalBottomSheet(
         context: context,
         builder: (context) {
-          return Container(
-            padding: EdgeInsets.only(top: 2, bottom: 5),
-            height: 300,
-            child: Column(
-              children: [
-                Container(
-                  padding: EdgeInsets.only(top: 5, bottom: 12),
-                  decoration: BoxDecoration(
-                    border: Border(bottom: BorderSide(color: Colors.grey[200])),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Container(
-                          margin: EdgeInsets.only(left: 15, top: 5),
-                          child: GestureDetector(
-                            child: Text(
-                              '取消',
-                              style: TextStyle(
-                                  fontSize: 16, color: Color(0xFF323232)),
-                            ),
-                            onTap: () => {Navigator.pop(context)},
-                          )),
-                      Container(
-                        child: Text(
-                          '行业类型',
-                          style:
-                              TextStyle(fontSize: 16, color: Color(0xFF323232)),
+          return StatefulBuilder(builder: (_, setBottomSheetState) {
+            return Container(
+              padding: EdgeInsets.only(top: 2, bottom: 5),
+              height: 300,
+              child: Column(
+                children: [
+                  Container(
+                    padding: EdgeInsets.only(top: 5, bottom: 12),
+                    decoration: BoxDecoration(
+                      border:
+                          Border(bottom: BorderSide(color: Colors.grey[200])),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                            margin: EdgeInsets.only(left: 15, top: 5),
+                            child: GestureDetector(
+                              child: Text(
+                                '取消',
+                                style: TextStyle(
+                                    fontSize: 16, color: Color(0xFF323232)),
+                              ),
+                              onTap: () => {Navigator.pop(context)},
+                            )),
+                        Container(
+                          child: Text(
+                            '行业类型',
+                            style: TextStyle(
+                                fontSize: 16, color: Color(0xFF323232)),
+                          ),
                         ),
-                      ),
-                      Container(
-                          margin: EdgeInsets.only(right: 15, top: 5),
-                          child: GestureDetector(
-                            child: Text(
-                              '确定',
-                              style: TextStyle(
-                                  fontSize: 16, color: Color(0xFF323232)),
-                            ),
-                            onTap: () => {Navigator.pop(context)},
-                          ))
-                    ],
+                        Container(
+                            margin: EdgeInsets.only(right: 15, top: 5),
+                            child: GestureDetector(
+                              child: Text(
+                                '确定',
+                                style: TextStyle(
+                                    fontSize: 16, color: Color(0xFF323232)),
+                              ),
+                              onTap: () => {Navigator.pop(context)},
+                            ))
+                      ],
+                    ),
                   ),
-                ),
-                Container(
-                  margin: EdgeInsets.only(top: 10),
-                  height: 220,
-                  child: ListView.builder(
-                      itemCount: industryData.length,
-                      itemBuilder: (context, index) {
-                        return getItemCheckbox(industryData[index]);
-                      }),
-                )
-              ],
-            ),
-          );
+                  Container(
+                    margin: EdgeInsets.only(top: 10),
+                    height: 220,
+                    child: ListView.builder(
+                        itemCount: industryData.length,
+                        itemBuilder: (context, index) {
+                          return getItemCheckbox(
+                              industryData[index], setBottomSheetState, pIndex);
+                        }),
+                  )
+                ],
+              ),
+            );
+          });
         });
   }
 
   /// CheckBox复选框
-  Widget getItemCheckbox(CheckBoxModel item) {
+  Widget getItemCheckbox(CheckBoxModel item, setBottomSheetState, pIndex) {
     return Container(
       height: 20,
       margin: EdgeInsets.only(bottom: 10),
@@ -172,9 +179,21 @@ class AccountState extends State<Account> {
           Checkbox(
               value: item.status,
               onChanged: (value) {
-                print(value);
-                setState(() {
+                setBottomSheetState(() {
+                  var nameList = [];
                   item.status = value;
+                  idList = [];
+                  industryData.forEach((element) {
+                    if (element.status) {
+                      idList.add(element.id);
+                      nameList.add(element.name);
+                    }
+                  });
+                  setState(() {
+                    strItems[pIndex]['cValue'] = nameList.join('/');
+                  });
+                  print(idList);
+                  print(strItems[pIndex]['cValue']);
                 });
               }),
           Text("${item.name}")
@@ -296,7 +315,10 @@ class AccountState extends State<Account> {
                         style: TextStyle(color: Colors.red, fontSize: 16)),
                     Container(
                       margin: EdgeInsets.only(left: 7),
-                      child: Text(item['name'], style: TextStyle(fontSize: 16)),
+                      child: Text(item['name'],
+                          style: TextStyle(fontSize: 16),
+                          overflow: TextOverflow.ellipsis,
+                          maxLines: 1),
                     ),
                   ],
                 ),
@@ -322,7 +344,14 @@ class AccountState extends State<Account> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text(filterName(index), style: TextStyle(fontSize: 16)),
+                Container(
+                  width: 200,
+                  child: Text(filterName(index),
+                      style: TextStyle(fontSize: 16),
+                      textAlign: TextAlign.right,
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1),
+                ),
                 Container(
                   alignment: Alignment.center,
                   margin: EdgeInsets.only(left: 5, right: 3, top: 2),

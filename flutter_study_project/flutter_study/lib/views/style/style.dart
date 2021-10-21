@@ -3,8 +3,11 @@ import 'package:flutter_study/components/style/style_align.dart';
 import 'package:flutter_study/components/style/style_animate_container.dart';
 import 'package:flutter_study/components/style/style_card.dart';
 import 'package:flutter_study/components/style/style_center.dart';
+import 'package:flutter_study/components/style/style_checkbox.dart';
+import 'package:flutter_study/components/style/style_chip.dart';
 import 'package:flutter_study/components/style/style_clipoval.dart';
 import 'package:flutter_study/components/style/style_container.dart';
+import 'package:flutter_study/components/style/style_dialog.dart';
 import 'package:flutter_study/components/style/style_expanded.dart';
 import 'package:flutter_study/components/style/style_gridview.dart';
 import 'package:flutter_study/components/style/style_listview.dart';
@@ -36,6 +39,9 @@ class Style extends StatelessWidget {
     'Widget  ->  TabBarView',
     'Widget  ->  ClipOval',
     'Widget  ->  AnimatedContainer',
+    'Widget  ->  CheckBox',
+    'Widget  ->  Dialog',
+    'Widget  ->  Chip',
   ];
 
   List<Widget> mainList = [
@@ -54,7 +60,10 @@ class Style extends StatelessWidget {
     style_page_view(),
     style_tabBar_view(),
     style_clipoval(),
-    style_animate_container()
+    style_animate_container(),
+    style_checkbox(),
+    style_dialog(),
+    style_chip()
   ];
 
   @override
