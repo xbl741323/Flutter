@@ -112,8 +112,8 @@ fl_chart: ^0.8.3
 #### 27、获取网络连接信息插件 https://github.com/flutter/plugins/tree/master/packages/connectivity
 connectivity: ^0.4.8+2
 
-#### 28、Toast https://github.com/PonnamKarthik/FlutterToast
-fluttertoast: ^4.0.0
+#### 28、oktoast https://pub.dev/packages/oktoast#-installing-tab-
+oktoast: ^3.1.3+1
 
 #### 29、加载Loading（指示器） https://github.com/jogboms/flutter_spinkit
 flutter_spinkit: "^4.1.2"
