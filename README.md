@@ -345,4 +345,42 @@ signature: ^3.2.0
 #### DragList - flutter拖动排序元素 https://pub.flutter-io.cn/packages/drag_list
 
 ## UI库
+
+#### Magpie Fly - 58集体出品组件库 https://github.com/wuba/magpie_fly
+
+#### FLUI - UI框架 https://pub.flutter-io.cn/packages/flui
+
+#### Get Widget - 拥有1000多个预构建的窗口小部件 https://github.com/ionicfirebaseapp/getwidget
+
+## 即时通讯
+
+#### tencent im plugin - 腾讯云IM https://github.com/JiangJuHong/FlutterTencentImPlugin
+
+#### RongCloud - 融云官方SDK https://github.com/rongcloud/rongcloud-im-flutter-sdk
+
+#### 环信 - 环信官方SDK https://github.com/easemob/im_flutter_sdk
+
+## 语音视频通话
+
+#### AgoraRtcEngine - 声网社区版SDK https://pub.dev/packages/agora_rtc_engine
+
+## 埋点/监控
+
+#### FlutterPageTracker - FlutterPageTracker 是一个易用的 Flutter 应用页面事件埋点插件。它不仅支持在普通导航事件中监听页面曝光和离开，也支持弹窗的曝光和离开。 https://github.com/SBDavid/flutter_page_tracker
+
+#### FlutterSliverTracker - 滑动曝光埋点框架，支持SliverList、SliverGrid https://github.com/SBDavid/flutter_sliver_tracker
+
+#### FlutterBugly - 腾讯Bugly flutter应用更新插件 https://github.com/crazecoder/flutter_bugly
+
+## 应用统计
+
+#### TalkingData - TalkingData官方出品 https://github.com/TalkingData/AppAnalytics_SDK_Flutter
+
+## 链接跳转APP
+
+#### JMLink - 极光魔链,支持一键启动,场景还原,无码邀请,服务报告 https://docs.jiguang.cn/jmlink/guideline/intro/
+
+#### openinstall - openinstall官方,支持渠道包导出,一键拉起与快速下载 https://pub.dev/packages/openinstall_flutter_plugin
+
+#### MobLink - MobTeach开发,支持场景还原,数据统计分析,实时修改按钮样式,web多点跳转app https://www.mob.com/wiki/detailed?wiki=MobLink_for_Flutter&id=34
  
