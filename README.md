@@ -267,4 +267,44 @@ signature: ^3.2.0
 #### Amap location - 高德地图定位flutter组件 https://pub.flutter-io.cn/packages/amap_location
 
 #### amap map fluttify - 高德地图组件 https://github.com/fluttify-project/amap_map_fluttify
+
+图表
+
+#### Charting - Material Design风格的图表库 https://pub.dev/packages/charts_flutter
+
+#### Circular Chart - 一个让你使用flutter轻松创建的动画圆形图控件的库 https://pub.dev/packages/flutter_circular_chart
+ 
+第三方登录
+
+#### Fluwx - 微信SDK,支持支付,分享,登录,订阅,拉起小程序 https://pub.dev/packages/fluwx
+ 
+#### QQ - qq登录,分享 https://pub.dev/packages/flutter_qq
+
+## 支付
+
+#### Alipay - 支付宝 https://pub.dev/packages/alipay_me
+
+#### tobias - 支付宝 https://pub.flutter-io.cn/packages/tobias
+
+#### flutter alipay - 支付宝支付 https://github.com/best-flutter/flutter_alipay
+
+## 权限
+
+#### Simple Permissions - 权限检查和请求 https://pub.flutter-io.cn/packages/simple_permissions
+
+#### permission handler - Flutter的权限插件。此插件提供了一个跨平台（iOS，Android）API来请求和检查权限 https://pub.dev/packages/permission_handler
+
+## 样式
+
+#### Shimmer - 闪光效果 https://pub.flutter-io.cn/packages/shimmer
+
+## JSON
+
+#### json serializable - json格式化 https://pub.dev/packages/json_serializable
+
+## HTML
+
+#### flutter html - 展示html https://pub.flutter-io.cn/packages/flutter_html
+
+#### flutter webview plugin - web浏览器 https://pub.flutter-io.cn/packages/flutter_webview_plugin
  
