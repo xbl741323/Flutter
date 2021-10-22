@@ -174,3 +174,20 @@ signature: ^3.2.0
 
 
 #### extended image - 缓存图片,编辑图片,图片浏览,保存,瀑布流布局 https://pub.dev/packages/extended_image
+
+## 二维码
+
+
+#### QR Code Reader - QR扫描文件 https://pub.dev/packages/qrcode_reader
+
+
+#### Fast QR Reader View - 快速扫描 https://pub.dev/packages/fast_qr_reader_view
+
+
+#### qr flutter - 二维码生成,解码 https://pub.flutter-io.cn/packages/qr_flutter
+
+
+#### QR Code Scanner - 二维码扫描 https://github.com/leyan95/qrcode_scanner
+
+
+#### Barcode Scanner - 二维码扫描 https://pub.dev/packages/barcode_scan
