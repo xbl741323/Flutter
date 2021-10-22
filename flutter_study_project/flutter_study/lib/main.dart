@@ -8,6 +8,7 @@ import 'package:flutter_study/views/my/my.dart';
 import 'package:flutter_study/views/network/network.dart';
 import 'package:flutter_study/views/state_manage/state_manage.dart';
 import 'package:flutter_study/views/style/style.dart';
+import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 import 'components/tabbar_item.dart';
 
@@ -18,18 +19,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [
-        ChangeNotifierProvider.value(value: LoginModel()),
-      ],
-      child: MaterialApp(
-        debugShowCheckedModeBanner: true, //控制右上角debug显隐
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
-        ),
-        home: MyHomePage(title: 'Flutter深度学习'),
-      ),
-    );
+        providers: [
+          ChangeNotifierProvider.value(value: LoginModel()),
+        ],
+        child: OKToast(
+          child: MaterialApp(
+            debugShowCheckedModeBanner: true, //控制右上角debug显隐
+            title: 'Flutter Demo',
+            theme: ThemeData(
+              primarySwatch: Colors.deepPurple,
+            ),
+            home: MyHomePage(title: 'Flutter深度学习'),
+          ),
+        ));
   }
 }
 
