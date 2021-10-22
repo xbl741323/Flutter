@@ -147,3 +147,29 @@ event_bus: ^1.1.1
 
 #### 39、签名 https://github.com/4Q-s-r-o/signature
 signature: ^3.2.0
+
+图片
+
+
+Image Picker - 图片选择器
+
+
+Cached network image - 显示来自网络的图像并将其保存在缓存中
+
+
+Image Cropper - 图片裁剪
+
+
+Flutter Advanced Network Image Provider - 高级图像缓存加载和缩放控制
+
+
+photo - flutter做的ui,方便自定义修改
+
+
+Multi Image Picker - 图片多选 
+
+
+flutter photo view - 图片预览
+
+
+extended image - 缓存图片,编辑图片,图片浏览,保存,瀑布流布局
