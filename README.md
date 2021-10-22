@@ -307,4 +307,42 @@ signature: ^3.2.0
 #### flutter html - 展示html https://pub.flutter-io.cn/packages/flutter_html
 
 #### flutter webview plugin - web浏览器 https://pub.flutter-io.cn/packages/flutter_webview_plugin
+
+## 组件
+
+#### Slidable - 侧滑组件 https://pub.flutter-io.cn/packages/flutter_slidable
+
+#### Vercode Inputer - 验证码输入框组件 https://pub.flutter-io.cn/packages/vercoder_inputer
+
+#### DragableGridview - 可拖拽排序组件 https://pub.flutter-io.cn/packages/dragablegridview_flutter
+
+#### Flutter Credit Card - 快速创建填写银行卡的动态组件 https://github.com/SimformSolutionsPvtLtd/flutter_credit_card
+
+#### Flutter Slide To Act - 滑动解锁组件 https://github.com/imtoori/flutter-slide-to-act
+
+#### account selector -多账户切换组件 https://github.com/harpreetseera/flutter_account_selector
+
+#### left scroll actions - 一款仿微信效果的 Flutter 左滑菜单插件。现在支持iOS的展开与弹性效果。 https://github.com/fluttercandies/left-scroll-actions
+ 
+#### azlistview - 城市列表,联系人列表 https://github.com/flutterchina/azlistview
+
+#### flip box bar - 3D底部导航栏 https://github.com/deven98/flip_box_bar
+
+#### Flutter Modal Bottom Sheet - 底部弹窗组件 https://github.com/jamesblasco/modal_bottom_sheet
+
+#### Rate my app - 评价我的app https://github.com/Skyost/RateMyApp
+
+#### Flutter Login - 登录注册页面 https://github.com/NearHuscarl/flutter_login
+
+#### FlutterTags - 快速创建漂亮标签 https://github.com/Dn-a/flutter_tags
+
+#### Flutter Draw - 自有绘画库 https://github.com/theindianappguy/flutter_draw
+
+#### Flutter Rating Bar - 星级评价组件 https://github.com/sarbagyastha/flutter_rating_bar
+
+#### flutter beautiful popup - 美化弹窗 https://github.com/jaweii/Flutter_beautiful_popup
+
+#### DragList - flutter拖动排序元素 https://pub.flutter-io.cn/packages/drag_list
+
+## UI库
  
