@@ -78,7 +78,7 @@ class _StateManageState extends State<StateManage> {
             // 可以设置按钮宽高
             width: double.infinity,
             height: 40,
-            margin: EdgeInsets.only(top: 20),
+            margin: EdgeInsets.only(top: 20, left: 10, right: 10),
             child: ElevatedButton(
                 child: Text(
                   "change",

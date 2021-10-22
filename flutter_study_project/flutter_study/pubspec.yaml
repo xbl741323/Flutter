@@ -83,6 +83,7 @@ flutter:
      - assets/images/eleven.jpg
      - assets/images/twelve.jpg
      - assets/images/keqing.png
+     - assets/images/ying.jpg
      - assets/data/
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -4,15 +4,20 @@ import 'package:flutter_study/states/global_notifier.dart';
 import 'package:flutter_study/views/account/account.dart';
 import 'package:flutter_study/views/flukit_ui/flukit_ui.dart';
 import 'package:flutter_study/views/login/login.dart';
-import 'package:flutter_study/views/my/my.dart';
 import 'package:flutter_study/views/network/network.dart';
+import 'package:flutter_study/views/setting/setting.dart';
 import 'package:flutter_study/views/state_manage/state_manage.dart';
 import 'package:flutter_study/views/style/style.dart';
 import 'package:oktoast/oktoast.dart';
 import 'package:provider/provider.dart';
 import 'components/tabbar_item.dart';
 
-void main() => Global.init().then((e) => runApp(MyApp()));
+// void main() => Global.init().then((e) => runApp(MyApp()));
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); //解决加载json错误
+  Global.init();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -46,10 +51,37 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _currentIndex = 0;
+  viewToast(title) {
+    showToast('${title}',
+        radius: 5,
+        backgroundColor: Colors.black54,
+        textPadding: EdgeInsets.all(12));
+  }
 
   toAccont() {
+    if (Global.loginFlag) {
+      Navigator.of(context)
+          .push(new MaterialPageRoute(builder: (ctx) => Account()));
+    } else {
+      toLogin();
+    }
+  }
+
+  toMy() {
     Navigator.of(context)
-        .push(new MaterialPageRoute(builder: (ctx) => Account()));
+        .push(new MaterialPageRoute(builder: (ctx) => Setting()));
+  }
+
+  toLogin() {
+    Navigator.of(context)
+        .push(new MaterialPageRoute(builder: (ctx) => Login()));
+  }
+
+  exit() {
+    viewToast('退出成功！');
+    Global.loginFlag = false;
+    Global.savePreference('loginFlag', false);
+    toLogin();
   }
 
   @override
@@ -68,24 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: BoxDecoration(
                     color: Colors.deepPurple,
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        '阿晴的主页',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 24,
-                        ),
-                      ),
-                      Container(
-                          margin: EdgeInsets.only(left: 10, top: 10),
-                          child: ClipOval(
-                            child: Image.asset("assets/images/keqing.png",
-                                width: 80, height: 80),
-                          ))
-                    ],
-                  )),
+                  child: getInfo()),
               ListTile(
                 leading: Icon(Icons.account_circle),
                 title: Text('账户信息'),
@@ -94,7 +109,15 @@ class _MyHomePageState extends State<MyHomePage> {
               ListTile(
                 leading: Icon(Icons.settings),
                 title: Text('设置'),
+                onTap: () => {toMy()},
               ),
+              Global.loginFlag == true
+                  ? ListTile(
+                      leading: Icon(Icons.arrow_forward),
+                      title: Text('退出'),
+                      onTap: () => {exit()},
+                    )
+                  : Text(''),
             ],
           ),
         ),
@@ -113,13 +136,61 @@ class _MyHomePageState extends State<MyHomePage> {
             TabBarItem(Icon(Icons.add_to_queue_sharp), "Http"),
             TabBarItem(Icon(Icons.api_sharp), "UI组件"),
             TabBarItem(Icon(Icons.backup_outlined), "状态管理"),
-            TabBarItem(Icon(Icons.account_circle), "我的")
           ],
         ),
         body: IndexedStack(
           index: _currentIndex,
-          children: [Style(), Network(), Flukit_ui(), StateManage(), My()],
+          children: [Style(), Network(), Flukit_ui(), StateManage()],
         ) // This trailing comma makes auto-formatting nicer for build methods.
         );
+  }
+
+  Widget getInfo() {
+    LoginModel loginModel = Provider.of<LoginModel>(context);
+    if (loginModel.loginFlag) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+              child: ClipOval(
+            child:
+                Image.asset("assets/images/keqing.png", width: 80, height: 80),
+          )),
+          Text(
+            '阿晴的主页',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 20,
+            ),
+          ),
+        ],
+      );
+    } else {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+              child: ClipOval(
+            child: GestureDetector(
+              child:
+                  Image.asset("assets/images/ying.jpg", width: 80, height: 80),
+              onTap: () => {toLogin()},
+            ),
+          )),
+          GestureDetector(
+            child: Text(
+              '点击登录',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 20,
+              ),
+            ),
+            onTap: () => {toLogin()},
+          )
+        ],
+      );
+    }
   }
 }

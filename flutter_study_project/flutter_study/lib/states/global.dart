@@ -7,7 +7,25 @@ class Global {
   static bool loginFlag = false; // 登录状态
 
   //初始化全局信息，会在APP启动时执行
-  static Future init() async {}
+  static Future init() async {
+    _prefs = await SharedPreferences.getInstance();
+    var loginFlagRes = _prefs.getBool('loginFlag');
+    var countRes = _prefs.getInt('count');
+    if (countRes != null) {
+      try {
+        count = countRes;
+      } catch (e) {
+        print(e);
+      }
+    }
+    if (loginFlagRes != null) {
+      try {
+        loginFlag = loginFlagRes;
+      } catch (e) {
+        print(e);
+      }
+    }
+  }
 
   // 单一存储全局变量loginFlag
   static saveLoginFlag() async {
@@ -46,15 +64,15 @@ class Global {
   static Future getPreference(String key, String type) async {
     _prefs = await SharedPreferences.getInstance();
     if (type == 'int') {
-      return  _prefs.getInt(key);
+      return _prefs.getInt(key);
     } else if (type == 'double') {
-      return  _prefs.getDouble(key);
+      return _prefs.getDouble(key);
     } else if (type == 'bool') {
-      return  _prefs.getBool(key);
+      return _prefs.getBool(key);
     } else if (type == 'String') {
-      return  _prefs.getString(key);
+      return _prefs.getString(key);
     } else if (type == 'List') {
-      return  _prefs.getStringList(key);
+      return _prefs.getStringList(key);
     } else {
       throw new Exception("不能得到这种类型");
     }
