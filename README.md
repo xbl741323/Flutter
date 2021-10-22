@@ -154,40 +154,62 @@ signature: ^3.2.0
 
 #### Image Picker - 图片选择器 https://pub.dev/packages/image_picker
 
-
 #### Cached network image - 显示来自网络的图像并将其保存在缓存中 https://pub.dev/packages/cached_network_image
-
 
 #### Image Cropper - 图片裁剪 https://pub.dev/packages/image_cropper
 
-
 #### Flutter Advanced Network Image Provider - 高级图像缓存加载和缩放控制 https://pub.dev/packages/flutter_advanced_networkimage
-
 
 #### photo - flutter做的ui,方便自定义修改 https://pub.dev/packages/photo
 
-
 #### Multi Image Picker - 图片多选 https://pub.flutter-io.cn/packages/multi_image_picker
 
-
 #### flutter photo view - 图片预览 https://pub.flutter-io.cn/packages/photo_view
-
 
 #### extended image - 缓存图片,编辑图片,图片浏览,保存,瀑布流布局 https://pub.dev/packages/extended_image
 
 ## 二维码
 
-
 #### QR Code Reader - QR扫描文件 https://pub.dev/packages/qrcode_reader
-
 
 #### Fast QR Reader View - 快速扫描 https://pub.dev/packages/fast_qr_reader_view
 
-
 #### qr flutter - 二维码生成,解码 https://pub.flutter-io.cn/packages/qr_flutter
-
 
 #### QR Code Scanner - 二维码扫描 https://github.com/leyan95/qrcode_scanner
 
-
 #### Barcode Scanner - 二维码扫描 https://pub.dev/packages/barcode_scan
+
+## 聊天列表
+
+#### Dialogflow - 聊天列表插件 https://github.com/VictorRancesCode/flutter_dialogflow
+
+## 动画
+
+#### Sequence Animation - 轻松实现复合交错的动画 https://github.com/Norbert515/flutter_sequence_animation
+
+#### SpinKit - 加载动画指示器 https://github.com/jogboms/flutter_spinkit
+ 
+#### VIllains - 页面转场动画 https://github.com/Norbert515/flutter_villains
+
+#### SlimyCard - 一种将试图分离成两张卡片的酷炫粘液动画 https://github.com/AkashDivya/SlimyCard-Animated-Flutter-Package
+
+#### Flutter Staggered Animations - 轻松的将交错的动画添加到您ListView，GridView，Column和Row https://pub.flutter-io.cn/packages/flutter_staggered_animations
+
+#### Animated Text Kit - flutter文字动效组件 https://pub.flutter-io.cn/packages/animated_text_kit
+
+#### like button - 点赞动画 https://pub.flutter-io.cn/packages/like_button
+
+## 日历
+
+#### Calendar - 日历 https://github.com/apptreesoftware/flutter_calendar
+
+## 选择器
+
+#### Flutter Picker - 选择器 https://github.com/yangyxd/flutter_picker
+
+#### DateTimeField - 时间选择器 https://pub.flutter-io.cn/packages/datetime_picker_formfield
+
+## 小红点
+
+#### Badge - 小红点插件 https://pub.dev/packages/badge
