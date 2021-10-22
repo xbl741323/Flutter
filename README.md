@@ -235,4 +235,36 @@ signature: ^3.2.0
 #### Flutter Sound - 播放音频以及录音功能 https://pub.flutter-io.cn/packages/flutter_sound
 
 #### flutter plugin record - 仿微信录音插件 https://github.com/yxwandroid/flutter_plugin_record
+
+## 通知
+
+#### LocalNotification - 这个库能让你在Android和iOS上创建Notifications很简单 https://pub.dev/packages/local_notifications
+
+#### Flutter Local Notifications - 一个跨平台的显示本地notifications的插件 https://pub.dev/packages/flutter_local_notifications
+
+#### App Badger - 桌面角标通知 https://pub.flutter-io.cn/packages/flutter_app_badger
+
+## 存储
+
+#### Shared preference - 键值对读写插件 https://pub.dev/packages/shared_preferences
+
+#### secure storage - 加密存储 https://github.com/mogol/flutter_secure_storage
+
+#### Flutter Data - 无缝管理Flutter应用程序中的持久数据的库 https://github.com/flutterdata/flutter_data
+
+#### sqflite - sqlite插件 https://pub.dev/packages/sqflite
+ 
+#### Localstorage - 支持多平台的存储 https://pub.dev/packages/localstorage
+
+## 地图
+
+#### Map View - 谷歌地图 https://pub.dev/packages/map_view
+
+#### Location - 这个插件 处理Android和iOS上的位置。它还提供位置更改时的回调 https://pub.dev/packages/location
+
+#### Amap - 高德地图3d flutter组件 https://pub.dev/packages/flutter_amap 
+
+#### Amap location - 高德地图定位flutter组件 https://pub.flutter-io.cn/packages/amap_location
+
+#### amap map fluttify - 高德地图组件 https://github.com/fluttify-project/amap_map_fluttify
  
