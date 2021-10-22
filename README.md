@@ -386,93 +386,93 @@ signature: ^3.2.0
 
 ## 分享
 
-#### ShareSDK - MobTeach官方,支持一键分享,第三方登录,LinkCard,短链转换,统计分析,闭环分享
+#### ShareSDK - MobTeach官方,支持一键分享,第三方登录,LinkCard,短链转换,统计分析,闭环分享 https://www.mob.com/wiki/detailed?wiki=ShareSDK_for_Flutter&id=14
 
 ## 设备
 
-#### Battery - 获取电池信息以及监控点亮变化
+#### Battery - 获取电池信息以及监控点亮变化 https://pub.dev/packages/battery
 
-#### device info - 当前设备相关信息
+#### device info - 当前设备相关信息 https://pub.dev/packages/device_info
 
 ## 下拉刷新
 
-#### flutter pulltorefresh - 一个提供上拉加载和下拉刷新的组件
+#### flutter pulltorefresh - 一个提供上拉加载和下拉刷新的组件 https://github.com/peng8350/flutter_pulltorefresh
 
-#### frefresh - 支持局部更新刷新区域和加载区域视图,阿里飞猪团队作品
+#### frefresh - 支持局部更新刷新区域和加载区域视图,阿里飞猪团队作品 https://pub.dev/packages/frefresh
 
 ## 状态管理
 
-#### scoped model - 允许您轻松地将数据模型从父Widget传递到它的后代。此外，它还会在模型更新时重建使用该模型的所有子项。
+#### scoped model - 允许您轻松地将数据模型从父Widget传递到它的后代。此外，它还会在模型更新时重建使用该模型的所有子项。 https://github.com/brianegan/scoped_model
 
 ## 轮播图
 
-#### Swiper - 轮播图
+#### Swiper - 轮播图 https://github.com/best-flutter/flutter_swiper
 
 ## 骨架屏
 
-#### PKSkeleton - 一个类似于Facebook & Twitter的卡片闪光加载骨架库
+#### PKSkeleton - 一个类似于Facebook & Twitter的卡片闪光加载骨架库 https://github.com/iampawan/PKSkeleton
 
 ## 进度条
 
-#### Sleek circular slider - 高度可定制的圆环滑块/进度条
+#### Sleek circular slider - 高度可定制的圆环滑块/进度条 https://github.com/matthewfx/sleek_circular_slider
 
 ## 广告
 
-#### Pangolin - 集成了字节跳动旗下的广告平台——穿山甲的Android和iOS的SDK
+#### Pangolin - 集成了字节跳动旗下的广告平台——穿山甲的Android和iOS的SDK https://github.com/OpenFlutter/Pangolin
 
 ## 推送
 
-#### MobPush - MobPush官方
+#### MobPush - MobPush官方 https://www.mob.com/wiki/detailed?wiki=MobPushForFlutterfenlei&id=136
 
-#### JPush - 官方极光推送
+#### JPush - 官方极光推送 https://github.com/jpush/jpush-flutter-plugin
 
-#### Getui - 官方个推
+#### Getui - 官方个推 https://github.com/GetuiLaboratory/getui-flutter-plugin
 
 ## 富文本编辑器
-
-#### Zefyr - flutter实现的富文本编辑器
+ 
+#### Zefyr - flutter实现的富文本编辑器 https://github.com/memspace/zefyr
 
 ## 更新
 
-#### r upgrade - Android和IOS的升级应用插件==Flutter应用升级插件
+#### r upgrade - Android和IOS的升级应用插件==Flutter应用升级插件 https://github.com/rhymelph/r_upgrade
 
-#### Install - Android安装APK,并使用网址转到iOS的应用商店
+#### Install - Android安装APK,并使用网址转到iOS的应用商店 https://pub.flutter-io.cn/packages/install_plugin
 
 ## 按钮
 
-#### Flutter Speed Dial - 可展开选项的浮动按钮.
+#### Flutter Speed Dial - 可展开选项的浮动按钮 https://pub.flutter-io.cn/packages/flutter_speed_dial
 
-#### MediumClapFlutter - 浮动的按钮组
+#### MediumClapFlutter - 浮动的按钮组 https://github.com/iampawan/MediumClapFlutter
 
-#### UnicornDialer - 带有快速拨号的浮动动作按钮
+#### UnicornDialer - 带有快速拨号的浮动动作按钮 https://github.com/tiagojencmartins/unicornspeeddial
 
-#### FButton - 阿里飞猪团队出品,支持圆角、边框、图标、特效、Loading 模式
+#### FButton - 阿里飞猪团队出品,支持圆角、边框、图标、特效、Loading 模式 https://github.com/Fliggy-Mobile/fbutton
 
 ## 抽屉
 
-#### sliding up panel - 可定制的上下滑出抽屉
+#### sliding up panel - 可定制的上下滑出抽屉 https://pub.flutter-io.cn/packages/sliding_up_panel
 
-#### FluitterInnerDrawer - 抽屉组件
+#### FluitterInnerDrawer - 抽屉组件 https://github.com/Dn-a/flutter_inner_drawer
 
 ## Switch 开关
 
-#### FSwitch - 阿里飞猪团队出品,一个有趣的、实用的开关组件。支持设置提示、滑块装饰、阴影以及良好的交互
+#### FSwitch - 阿里飞猪团队出品,一个有趣的、实用的开关组件。支持设置提示、滑块装饰、阴影以及良好的交互 https://github.com/Fliggy-Mobile/fswitch
 
-#### Radio 单选框
+## Radio 单选框
 
-#### FRadio - 阿里飞猪团队出品,一个适用于几乎任意单选场景的单选组件。支持优良的交互特效，以及像吃汉堡 🍔一样简单的多交互状态视图切换构建
+#### FRadio - 阿里飞猪团队出品,一个适用于几乎任意单选场景的单选组件。支持优良的交互特效，以及像吃汉堡 🍔一样简单的多交互状态视图切换构建 https://github.com/Fliggy-Mobile/fradio
 
 ## 其他
 
-#### flutter dropdown menu - 下拉菜单
+#### flutter dropdown menu - 下拉菜单 https://pub.flutter-io.cn/packages/dropdown_menu
 
-#### url launcher - 打开特定url,如网址,右键,电话,短信
+#### url launcher - 打开特定url,如网址,右键,电话,短信 https://pub.dev/packages/url_launcher
 
-#### Passcode Lock Screen - 仿iPhone锁屏
+#### Passcode Lock Screen - 仿iPhone锁屏 https://pub.flutter-io.cn/packages/passcode_screen
 
-#### Scratcher - 刮刮卡组件
+#### Scratcher - 刮刮卡组件 https://pub.flutter-io.cn/packages/scratcher
 
-#### FSuper - 阿里飞猪团队出品,能够帮助开发者快速舒适的构建复杂视图。支持富文本、圆角、边框、图片、小红点、以及同时设置多达两个子组件，且控制它们的相对位置。
+#### FSuper - 阿里飞猪团队出品,能够帮助开发者快速舒适的构建复杂视图。支持富文本、圆角、边框、图片、小红点、以及同时设置多达两个子组件，且控制它们的相对位置。 https://github.com/Fliggy-Mobile/fsuper
 
-#### FFloat - FFloat ，虽简单易用，但能满足你对浮层的一切想象。生而优雅，支持精准的位置控制。圆角、边框、渐变、阴影装饰三角
+#### FFloat - FFloat ，虽简单易用，但能满足你对浮层的一切想象。生而优雅，支持精准的位置控制。圆角、边框、渐变、阴影装饰三角 https://github.com/Fliggy-Mobile/ffloat
  
