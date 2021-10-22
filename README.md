@@ -213,3 +213,26 @@ signature: ^3.2.0
 ## 小红点
 
 #### Badge - 小红点插件 https://pub.dev/packages/badge
+
+## 视频
+
+#### chewie - 基于video_palyer基础上包装了控制UI https://pub.dev/packages/chewie
+
+#### Video Player - 视频播放器 https://pub.dev/packages/video_player
+
+#### flutter video compress - 视频压缩,获取视频缩略图,视频信息 https://github.com/rurico/flutter_video_compress
+
+#### Video Trimmer - 视频剪辑 https://github.com/sbis04/video_trimmer
+
+## 音频
+
+#### AudioPlayer - 一个播放远程或本地音频文件Flutter音频插件 https://pub.dev/packages/audioplayer
+
+#### AudioPlayers - 支持同时播放多个音频并显示音量控制 https://pub.dev/packages/audioplayers
+
+#### Audio recorder - 录音以及保存本地 https://pub.flutter-io.cn/packages/audio_recorder
+
+#### Flutter Sound - 播放音频以及录音功能 https://pub.flutter-io.cn/packages/flutter_sound
+
+#### flutter plugin record - 仿微信录音插件 https://github.com/yxwandroid/flutter_plugin_record
+ 
