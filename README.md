@@ -150,28 +150,27 @@ signature: ^3.2.0
 
 # Flutter第三方插件汇总
 
-图片
+## 图片
+
+#### Image Picker - 图片选择器 https://pub.dev/packages/image_picker
 
 
-Image Picker - 图片选择器
+#### Cached network image - 显示来自网络的图像并将其保存在缓存中 https://pub.dev/packages/cached_network_image
 
 
-Cached network image - 显示来自网络的图像并将其保存在缓存中
+#### Image Cropper - 图片裁剪 https://pub.dev/packages/image_cropper
 
 
-Image Cropper - 图片裁剪
+#### Flutter Advanced Network Image Provider - 高级图像缓存加载和缩放控制 https://pub.dev/packages/flutter_advanced_networkimage
 
 
-Flutter Advanced Network Image Provider - 高级图像缓存加载和缩放控制
+#### photo - flutter做的ui,方便自定义修改 https://pub.dev/packages/photo
 
 
-photo - flutter做的ui,方便自定义修改
+#### Multi Image Picker - 图片多选 https://pub.flutter-io.cn/packages/multi_image_picker
 
 
-Multi Image Picker - 图片多选 
+#### flutter photo view - 图片预览 https://pub.flutter-io.cn/packages/photo_view
 
 
-flutter photo view - 图片预览
-
-
-extended image - 缓存图片,编辑图片,图片浏览,保存,瀑布流布局
+#### extended image - 缓存图片,编辑图片,图片浏览,保存,瀑布流布局 https://pub.dev/packages/extended_image
