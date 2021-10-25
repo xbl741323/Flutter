@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_study/api/api_login.dart';
@@ -55,13 +56,13 @@ class PropertyDetailState extends State<PropertyDetail> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.network(
-                    this.propertyInfo['coverUrl'] != ''
+                  CachedNetworkImage(
+                    width: double.infinity,
+                    imageUrl: this.propertyInfo['coverUrl'] != ''
                         ? 'https://static.wotao.com/' +
                             '${this.propertyInfo['coverUrl']}'
                         : 'https://static.wotao.com/' +
                             '${this.propertyInfo['coverUrls'][0]['url']}',
-                    width: double.infinity,
                   ),
                   Container(
                     margin: EdgeInsets.only(top: 10, bottom: 5),

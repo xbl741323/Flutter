@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_study/components/common/area_select/city_select.dart';
 import 'package:flutter_study/components/common/back_to_top/example.dart';
+import 'package:flutter_study/components/common/cached_image/cached_img_example.dart';
 import 'package:flutter_study/components/common/city_picker/city_pick.dart';
+import 'package:flutter_study/components/common/extended_image/extended_image_example.dart';
 import 'package:flutter_study/components/common/image_picker/image_picker.dart';
 import 'package:flutter_study/components/common/loading/loading.dart';
+import 'package:flutter_study/components/common/photo_view/photo_view.dart';
 import 'package:flutter_study/components/common/rating_bar/rating_bar.dart';
 import 'package:flutter_study/components/common/swipper/swiper_page.dart';
 import 'package:flutter_study/components/common/other_picker/other_picker.dart';
@@ -21,7 +24,10 @@ class Flukit_ui extends StatelessWidget {
     'Toast',
     '回到顶部',
     'Loading',
-    'RatingBar星级评价'
+    'RatingBar星级评价',
+    'cached_network_image缓存图片',
+    'extended_image官方图片扩展库',
+    'photo_view图片预览'
   ];
 
   List<Widget> mainList = [
@@ -33,7 +39,10 @@ class Flukit_ui extends StatelessWidget {
     ToastUi(),
     ToTop(),
     loading_example(),
-    rating_bar_example()
+    rating_bar_example(),
+    cached_image_example(),
+    extended_image_example(),
+    photo_view_example()
   ];
 
   @override

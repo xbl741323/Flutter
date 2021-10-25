@@ -1,9 +1,9 @@
-import 'dart:ffi';
-
+import 'dart:io';
 import 'package:city_pickers/city_pickers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_study/components/common/other_picker/PickerTool.dart';
 import 'package:flutter_study/views/account/ItemUpdate.dart';
+import 'package:images_picker/images_picker.dart';
 
 class Account extends StatefulWidget {
   @override
@@ -18,6 +18,21 @@ class AccountState extends State<Account> {
     CheckBoxModel(17, 'B采矿业', false),
     CheckBoxModel(18, 'C制造业', false)
   ];
+
+  /// 图片文件
+  File _image;
+
+  Future getImage() async {
+    List<Media> res = await ImagesPicker.pick(
+        count: 1, // 最大可选择数量
+        pickType: PickType.image, // 选择媒体类型，默认图片
+        cropOpt: CropOption(
+            aspectRatio: CropAspectRatio.custom, cropType: CropType.circle));
+    setState(() {
+      print(res[0].path);
+      _image = File(res[0].path);
+    });
+  }
 
   List<dynamic> strItems = <dynamic>[
     {'name': '账户类型', 'cValue': '', 'cId': ''},
@@ -334,11 +349,21 @@ class AccountState extends State<Account> {
   Widget getSelectAndImg(dynamic item, index) {
     return Container(
       child: index == 1
-          ? Container(
-              padding: EdgeInsets.only(top: 1, bottom: 1, right: 10),
-              child: ClipOval(
-                child: Image.asset('assets/images/keqing.png'),
+          ? GestureDetector(
+              child: Container(
+                padding: EdgeInsets.only(top: 1, bottom: 1, right: 10),
+                child: ClipOval(
+                  child: _image == null
+                      ? Image.asset('assets/images/keqing.png')
+                      : Image.file(
+                          _image,
+                          fit: BoxFit.fill,
+                          width: 70,
+                          height: 70,
+                        ),
+                ),
               ),
+              onTap: () => {getImage()},
             )
           : Row(
               mainAxisAlignment: MainAxisAlignment.center,

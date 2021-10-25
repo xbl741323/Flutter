@@ -20,7 +20,7 @@ class image_picker_state extends State<image_picker> {
   /// 存放获取到的本地路径
   /// 异步吊起相机拍摄新照片方法
   Future _getCameraImage() async {
-    final cameraImages = await picker.getImage(source: ImageSource.camera);
+    final cameraImages = await picker.pickImage(source: ImageSource.camera);
     if (mounted) {
       setState(() {
         //拍摄照片不为空
@@ -37,7 +37,7 @@ class image_picker_state extends State<image_picker> {
 
   Future _getImage() async {
     //选择相册
-    final pickerImages = await picker.getImage(source: ImageSource.gallery);
+    final pickerImages = await picker.pickImage(source: ImageSource.gallery);
     if (mounted) {
       setState(() {
         if (pickerImages != null) {
