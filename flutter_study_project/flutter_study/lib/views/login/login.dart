@@ -97,7 +97,7 @@ class _LoginBodyState extends State<Login> {
         margin: EdgeInsets.only(bottom: 30),
         decoration: BoxDecoration(
             image: DecorationImage(
-                fit: BoxFit.fill, image: AssetImage('assets/images/nine.png'))),
+                fit: BoxFit.fill, image: AssetImage('assets/images/two.jpg'))),
         child: GestureDetector(
           child: Container(
             margin: EdgeInsets.only(left: 20, top: 35),
@@ -122,8 +122,14 @@ class _LoginBodyState extends State<Login> {
               child: TextFormField(
                 initialValue: phone,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.phone_android),
+                  prefixIcon: Icon(
+                    Icons.phone_android,
+                    color: Colors.deepPurple.withOpacity(0.8),
+                  ),
+                  fillColor: Colors.deepPurple.withOpacity(0.8),
                   labelText: "手机号",
+                  labelStyle:
+                      TextStyle(color: Colors.deepPurple.withOpacity(0.8)),
                   hintText: "请输入您的手机号",
                   hintStyle: TextStyle(color: Color(0xFF999999), fontSize: 12),
                 ),
@@ -140,8 +146,13 @@ class _LoginBodyState extends State<Login> {
               child: TextFormField(
                 initialValue: password,
                 decoration: InputDecoration(
-                  prefixIcon: Icon(Icons.lock),
+                  prefixIcon: Icon(
+                    Icons.lock,
+                    color: Colors.deepPurple.withOpacity(0.8),
+                  ),
                   labelText: "密码",
+                  labelStyle:
+                      TextStyle(color: Colors.deepPurple.withOpacity(0.8)),
                   hintText: "请输入您的密码",
                   hintStyle: TextStyle(color: Color(0xFF999999), fontSize: 12),
                 ),
@@ -163,14 +174,17 @@ class _LoginBodyState extends State<Login> {
               child: ElevatedButton(
                   child: Text(
                     "登录",
-                    style: TextStyle(fontSize: 18),
+                    style: TextStyle(fontSize: 16),
                   ),
                   onPressed: () => {
                         formGlobalKey.currentState.save(),
                         formGlobalKey.currentState.validate(),
                         this.userLogin()
                       },
-                  style: ButtonStyle()),
+                  style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(
+                    Colors.deepPurple.withOpacity(0.8),
+                  ))),
             )
           ],
         ),

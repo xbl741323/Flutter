@@ -15,11 +15,7 @@ class _StateManageState extends State<StateManage> {
   int showNum = 0;
   bool status = true;
   changeCount() {
-    setState(() => {status = !status});
-    Global.count = num;
-    Global.loginFlag = !status;
-    Global.savePreference('count', num);
-    Global.savePreference('loginFlag', !status);
+    setState(() => {Global.count = num, Global.savePreference('count', num)});
   }
 
   @override
