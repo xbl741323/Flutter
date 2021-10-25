@@ -268,13 +268,13 @@ signature: ^3.2.0
 
 #### amap map fluttify - 高德地图组件 https://github.com/fluttify-project/amap_map_fluttify
 
-图表
+## 图表
 
 #### Charting - Material Design风格的图表库 https://pub.dev/packages/charts_flutter
 
 #### Circular Chart - 一个让你使用flutter轻松创建的动画圆形图控件的库 https://pub.dev/packages/flutter_circular_chart
  
-第三方登录
+## 第三方登录
 
 #### Fluwx - 微信SDK,支持支付,分享,登录,订阅,拉起小程序 https://pub.dev/packages/fluwx
  
