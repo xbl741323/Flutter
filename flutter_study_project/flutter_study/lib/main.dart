@@ -50,6 +50,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  DateTime _lastPressedAt; //上次点击时间
   int _currentIndex = 0;
   viewToast(title) {
     showToast('${title}',
@@ -81,7 +82,10 @@ class _MyHomePageState extends State<MyHomePage> {
     viewToast('退出成功！');
     Global.loginFlag = false;
     Global.savePreference('loginFlag', false);
-    toLogin();
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => Login()),
+        (route) => route == null);
   }
 
   @override
@@ -91,57 +95,70 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget getMainBody() {
     LoginModel loginModel = Provider.of<LoginModel>(context);
-    return Scaffold(
-        drawer: Drawer(
-          child: ListView(padding: EdgeInsets.zero, children: [
-            DrawerHeader(
-                decoration: BoxDecoration(
-                  color: Colors.deepPurple,
-                ),
-                child: getInfo()),
-            ListTile(
-              leading: Icon(Icons.account_circle),
-              title: Text('账户信息'),
-              onTap: () => {toAccont()},
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text('设置'),
-              onTap: () => {toMy()},
-            ),
-            Consumer<LoginModel>(builder: (context, loginModel, Widget child) {
-              return loginModel.loginFlag == true
-                  ? ListTile(
-                      leading: Icon(Icons.arrow_forward),
-                      title: Text('退出'),
-                      onTap: () => {exit()},
-                    )
-                  : Text('');
-            }),
-          ]),
-        ),
-        bottomNavigationBar: BottomNavigationBar(
-          unselectedFontSize: 12, // 设置不选中时的字体大小
-          selectedFontSize: 12, // 设置选中时的字体大小
-          type: BottomNavigationBarType.fixed,
-          currentIndex: _currentIndex,
-          onTap: (int index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-          items: [
-            TabBarItem(Icon(Icons.whatshot_outlined), "样式"),
-            TabBarItem(Icon(Icons.add_to_queue_sharp), "Http"),
-            TabBarItem(Icon(Icons.api_sharp), "UI组件"),
-            TabBarItem(Icon(Icons.backup_outlined), "状态管理"),
-          ],
-        ),
-        body: IndexedStack(
-          index: _currentIndex,
-          children: [Style(), Network(), Flukit_ui(), StateManage()],
-        ) // This trailing comma makes auto-formatting nicer for build methods.
-        );
+    return WillPopScope(
+      onWillPop: () async {
+        if (_lastPressedAt == null ||
+            DateTime.now().difference(_lastPressedAt) > Duration(seconds: 2)) {
+          //两次点击间隔超过2秒则重新计时
+          _lastPressedAt = DateTime.now();
+          viewToast('再按一次退出程序！');
+          return false;
+        }
+        return true;
+      },
+      child: Scaffold(
+          drawer: Drawer(
+            child: ListView(padding: EdgeInsets.zero, children: [
+              DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Colors.deepPurple,
+                  ),
+                  child: getInfo()),
+              ListTile(
+                leading: Icon(Icons.account_circle),
+                title: Text('账户信息'),
+                onTap: () => {toAccont()},
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text('设置'),
+                onTap: () => {toMy()},
+              ),
+              Consumer<LoginModel>(
+                  builder: (context, loginModel, Widget child) {
+                return loginModel.loginFlag == true
+                    ? ListTile(
+                        leading: Icon(Icons.arrow_forward),
+                        title: Text('退出'),
+                        onTap: () => {exit()},
+                      )
+                    : Text('');
+              }),
+            ]),
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            unselectedFontSize: 12, // 设置不选中时的字体大小
+            selectedFontSize: 12, // 设置选中时的字体大小
+            type: BottomNavigationBarType.fixed,
+            currentIndex: _currentIndex,
+            onTap: (int index) {
+              setState(() {
+                _currentIndex = index;
+              });
+            },
+            items: [
+              TabBarItem(Icon(Icons.whatshot_outlined), "样式"),
+              TabBarItem(Icon(Icons.add_to_queue_sharp), "Http"),
+              TabBarItem(Icon(Icons.api_sharp), "UI组件"),
+              TabBarItem(Icon(Icons.backup_outlined), "状态管理"),
+            ],
+          ),
+          body: IndexedStack(
+            index: _currentIndex,
+            children: [Style(), Network(), Flukit_ui(), StateManage()],
+          ) // This trailing comma makes auto-formatting nicer for build methods.
+          ),
+    );
   }
 
   Widget getInfo() {

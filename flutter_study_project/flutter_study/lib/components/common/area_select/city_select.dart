@@ -22,7 +22,8 @@ class city_select_state extends State<city_select> {
   @override
   void initState() {
     super.initState();
-    // _hotCityList.add(CityModel(name: '安徽', tagIndex: '★'));
+    _hotCityList.add(CityModel(name: '安徽', tagIndex: '★'));
+    _hotCityList.add(CityModel(name: '江苏', tagIndex: '★'));
     cityList.addAll(_hotCityList);
     SuspensionUtil.setShowSuspensionStatus(cityList);
 

@@ -6,6 +6,7 @@ import 'package:flutter_study/components/common/city_picker/city_pick.dart';
 import 'package:flutter_study/components/common/extended_image/extended_image_example.dart';
 import 'package:flutter_study/components/common/image_picker/image_picker.dart';
 import 'package:flutter_study/components/common/loading/loading.dart';
+import 'package:flutter_study/components/common/location/location_example.dart';
 import 'package:flutter_study/components/common/photo_view/photo_view.dart';
 import 'package:flutter_study/components/common/rating_bar/rating_bar.dart';
 import 'package:flutter_study/components/common/swipper/swiper_page.dart';
@@ -27,7 +28,8 @@ class Flukit_ui extends StatelessWidget {
     'RatingBar星级评价',
     'cached_network_image缓存图片',
     'extended_image官方图片扩展库',
-    'photo_view图片预览'
+    'photo_view图片预览',
+    'location定位',
   ];
 
   List<Widget> mainList = [
@@ -42,7 +44,8 @@ class Flukit_ui extends StatelessWidget {
     rating_bar_example(),
     cached_image_example(),
     extended_image_example(),
-    photo_view_example()
+    photo_view_example(),
+    location_example()
   ];
 
   @override

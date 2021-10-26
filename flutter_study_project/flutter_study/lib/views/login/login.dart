@@ -51,8 +51,12 @@ class _LoginBodyState extends State<Login> {
         viewToast('登录成功！');
         this.changeLoginFlag(true);
         if (Global.loginFlag) {
-          Navigator.of(context)
-              .push(new MaterialPageRoute(builder: (ctx) => MyApp()));
+          // Navigator.of(context)
+          //     .push(new MaterialPageRoute(builder: (ctx) => MyApp()));
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => MyApp()),
+              (route) => route == null);
         }
       } else {
         viewToast('账号或密码错误！');
