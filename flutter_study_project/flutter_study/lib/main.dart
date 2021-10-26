@@ -93,33 +93,32 @@ class _MyHomePageState extends State<MyHomePage> {
     LoginModel loginModel = Provider.of<LoginModel>(context);
     return Scaffold(
         drawer: Drawer(
-          child: ListView(
-            padding: EdgeInsets.zero,
-            children: [
-              DrawerHeader(
-                  decoration: BoxDecoration(
-                    color: Colors.deepPurple,
-                  ),
-                  child: getInfo()),
-              ListTile(
-                leading: Icon(Icons.account_circle),
-                title: Text('账户信息'),
-                onTap: () => {toAccont()},
-              ),
-              ListTile(
-                leading: Icon(Icons.settings),
-                title: Text('设置'),
-                onTap: () => {toMy()},
-              ),
-              Global.loginFlag == true
+          child: ListView(padding: EdgeInsets.zero, children: [
+            DrawerHeader(
+                decoration: BoxDecoration(
+                  color: Colors.deepPurple,
+                ),
+                child: getInfo()),
+            ListTile(
+              leading: Icon(Icons.account_circle),
+              title: Text('账户信息'),
+              onTap: () => {toAccont()},
+            ),
+            ListTile(
+              leading: Icon(Icons.settings),
+              title: Text('设置'),
+              onTap: () => {toMy()},
+            ),
+            Consumer<LoginModel>(builder: (context, loginModel, Widget child) {
+              return loginModel.loginFlag == true
                   ? ListTile(
                       leading: Icon(Icons.arrow_forward),
                       title: Text('退出'),
                       onTap: () => {exit()},
                     )
-                  : Text(''),
-            ],
-          ),
+                  : Text('');
+            }),
+          ]),
         ),
         bottomNavigationBar: BottomNavigationBar(
           unselectedFontSize: 12, // 设置不选中时的字体大小
@@ -147,26 +146,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Widget getInfo() {
     LoginModel loginModel = Provider.of<LoginModel>(context);
-    if (loginModel.loginFlag) {
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Container(
-              child: ClipOval(
-            child:
-                Image.asset("assets/images/keqing.png", width: 80, height: 80),
-          )),
-          Text(
-            '阿晴的主页',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 20,
-            ),
-          ),
-        ],
-      );
-    } else {
+    return Consumer<LoginModel>(builder: (context, loginModel, Widget child) {
       return Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
@@ -174,23 +154,27 @@ class _MyHomePageState extends State<MyHomePage> {
           Container(
               child: ClipOval(
             child: GestureDetector(
-              child:
-                  Image.asset("assets/images/ying.jpg", width: 80, height: 80),
-              onTap: () => {toLogin()},
+              child: Image.asset(
+                  loginModel.loginFlag == true
+                      ? "assets/images/keqing.png"
+                      : "assets/images/ying.jpg",
+                  width: 80,
+                  height: 80),
+              onTap: () => {loginModel.loginFlag == false ? toLogin() : ''},
             ),
           )),
           GestureDetector(
             child: Text(
-              '点击登录',
+              loginModel.loginFlag == true ? '阿晴的主页' : '点击登录',
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 20,
               ),
             ),
-            onTap: () => {toLogin()},
+            onTap: () => {loginModel.loginFlag == false ? toLogin() : ''},
           )
         ],
       );
-    }
+    });
   }
 }
