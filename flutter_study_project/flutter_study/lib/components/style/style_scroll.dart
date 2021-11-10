@@ -53,10 +53,12 @@ class style_scroll_state extends State<style_scroll> {
                   bottom: BorderSide(
                       width: 2,
                       color:
-                          cIndex == index ? Colors.deepPurple : Colors.white))),
+                          cIndex == index ? Colors.deepPurple : Color(0xFFFAFAFA)))),
           child: Text(
             '${list[index]}',
             textAlign: TextAlign.center,
+            style: TextStyle(
+                color: cIndex == index ? Colors.deepPurple : Colors.black),
           )),
       onTap: () => changeIndex(index),
     );
