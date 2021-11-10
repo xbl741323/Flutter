@@ -84,6 +84,7 @@ class _NetworkState extends State<Network> {
           margin: EdgeInsets.only(top: 5),
           padding: EdgeInsets.only(top: 2, right: 5, bottom: 5, left: 5),
           child: ListView.builder(
+            scrollDirection: Axis.vertical,
             controller: _controller, //这里的controller一定要赋值，这样才能保证是同一个控制器中
             itemCount: dataList.length + 1,
             shrinkWrap: true,

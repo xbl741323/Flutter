@@ -7,7 +7,7 @@ class style_tabBar_view extends StatefulWidget {
 }
 
 class style_tabBar_state extends State<style_tabBar_view> {
-  final List<String> myTabs = ['电影', '电视', '综艺', '读书', '音乐', '同城'];
+  final List<String> myTabs = ['电影', '电视', '综艺', '读书', '音乐', '同城','番剧','音乐','游戏'];
   TabController controller;
 
   @override
@@ -23,6 +23,7 @@ class style_tabBar_state extends State<style_tabBar_view> {
           title: Text("TabBarView"),
           backgroundColor: Colors.deepPurple,
           bottom: TabBar(
+              isScrollable:true,
               indicatorColor: Colors.white,
               tabs: myTabs.map((e) => Tab(text: e)).toList()),
         ),

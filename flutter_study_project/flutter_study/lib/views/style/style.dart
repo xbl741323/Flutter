@@ -13,6 +13,7 @@ import 'package:flutter_study/components/style/style_gridview.dart';
 import 'package:flutter_study/components/style/style_listview.dart';
 import 'package:flutter_study/components/style/style_pageview.dart';
 import 'package:flutter_study/components/style/style_row_and_column.dart';
+import 'package:flutter_study/components/style/style_scroll.dart';
 import 'package:flutter_study/components/style/style_stack.dart';
 import 'package:flutter_study/components/style/style_tabbarview.dart';
 import 'package:flutter_study/components/style/style_text.dart';
@@ -42,6 +43,7 @@ class Style extends StatelessWidget {
     'Widget  ->  CheckBox',
     'Widget  ->  Dialog',
     'Widget  ->  Chip',
+    'Widget  ->  自定义Scroll',
   ];
 
   List<Widget> mainList = [
@@ -63,7 +65,8 @@ class Style extends StatelessWidget {
     style_animate_container(),
     style_checkbox(),
     style_dialog(),
-    style_chip()
+    style_chip(),
+    style_scroll()
   ];
 
   @override
